@@ -22,8 +22,11 @@ main:
         
   # - title: "Blog Posts"
   #   url: /year-archive/
-    
-  - title: "CV"
+
+  - title: "About"
+    url: /
+  
+  - title: "Resume"
     url: /files/pratyush_resume.pdf
     
   # - title: "CV"

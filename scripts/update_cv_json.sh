@@ -7,7 +7,8 @@
 BASE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 
 # Define file paths
-CV_MARKDOWN="$BASE_DIR/_pages/cv.md"
+# CV_MARKDOWN="$BASE_DIR/_pages/cv.md"
+CV_MARKDOWN = "BASE_DIR/_pages/pratyush_resume.pdf"
 CV_JSON="$BASE_DIR/_data/cv.json"
 CONFIG_FILE="$BASE_DIR/_config.yml"
 

@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Pratyush Jha — site styles
+   Pratyush Jha â€” site styles
 
    Light theme: ink on pale yellow paper. Dark theme: the dark end of the
    cyclic colour map the home-page simulation uses for spin angle.
@@ -272,6 +272,42 @@ button {
   color: var(--paper);
 }
 
+/* Running text is justified on tablets and larger screens. On phones the
+   columns are too narrow for even word spacing (long words like
+   "multiscaling" leave large gaps), so text stays left-aligned there.
+   Hyphenation (the page is marked lang="en") keeps the gaps even where the
+   browser supports it. Labels, dates, buttons and one-line items stay
+   left-aligned at every size. */
+@media (min-width: 40rem) {
+  main p,
+  main li {
+    text-align: justify;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+    hyphenate-limit-chars: 7 3 3;
+  }
+
+  main .entry__when,
+  main .hero__role,
+  main .hero__lede,
+  main .hero__actions,
+  main .page-actions,
+  main .block__more,
+  main .entry__more,
+  main .project__paper,
+  main .post__meta,
+  main .link-row li,
+  main .pills,
+  main .stack li,
+  main .tags li,
+  main .xy__fallback,
+  main .xy__paper {
+    text-align: left;
+    -webkit-hyphens: manual;
+    hyphens: manual;
+  }
+}
+
 /* 4. Page frame ----------------------------------------------------------- */
 
 .icon {
@@ -540,7 +576,7 @@ main {
   opacity: 0.75;
 }
 
-/* Small rounded links: arXiv, DOI, Cite… */
+/* Small rounded links: arXiv, DOI, Citeâ€¦ */
 .pills {
   display: flex;
   flex-wrap: wrap;
@@ -1016,7 +1052,7 @@ ul.entry__body.plain {
 }
 
 .more[open] > summary::before {
-  content: "−";
+  content: "âˆ’";
 }
 
 .more > summary:hover {

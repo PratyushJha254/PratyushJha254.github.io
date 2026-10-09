@@ -52,9 +52,9 @@ defaults:
 # explains where the two ids come from.
 comments:
   repo: "pratyushjha254/preview-repo"          # for example pratyushjha254/pratyushjha254.github.io
-  repo_id: "R_kgDOU75odg"
+  repo_id: "R_kgDORjoM4A"
   category: Announcements
-  category_id: "DIC_kwDOU75ods4DHDjg"
+  category_id: "DIC_kwDORjoM4M4DHb2B"
 
 exclude:
   - README.md

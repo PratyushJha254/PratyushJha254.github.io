@@ -13,7 +13,12 @@
     non-reciprocal turbulence?](https://arxiv.org/abs/2608.27378)
   visible: true
 
-- date: Jun 2026
+- date: Aug 2026
+  text: >-
+    Attended the Conference 'Plasma Turbulence: New Challenges from Magnetic Confinement' at ICTS.
+  visible: false
+
+- date: May 2026
   text: >-
     My paper on courtroom-inspired verification of financial misinformation
     appeared at the ICWSM 2026 Workshop on Misinformation Detection, after

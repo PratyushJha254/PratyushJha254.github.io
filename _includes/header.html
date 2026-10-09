@@ -1,0 +1,22 @@
+<header class="site-header" data-header>
+  <div class="wrap site-header__inner">
+    <a class="site-name" href="{{ '/' | relative_url }}">{{ site.data.profile.name }}</a>
+    <nav class="site-nav" aria-label="Main">
+      <ul>
+        {%- for item in site.data.navigation %}
+          {%- if item.only_if == "posts" and site.posts.size == 0 %}{% continue %}{% endif %}
+        <li>
+          <a href="{{ item.url | relative_url }}"
+            {%- if page.url == item.url %} aria-current="page"
+            {%- elsif page.url contains item.url %} class="is-section"
+            {%- endif %}>{{ item.label }}</a>
+        </li>
+        {%- endfor %}
+      </ul>
+      <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch theme" hidden>
+        <span class="theme-toggle__to-dark">{% include icon.html name="moon" %}</span>
+        <span class="theme-toggle__to-light">{% include icon.html name="sun" %}</span>
+      </button>
+    </nav>
+  </div>
+</header>

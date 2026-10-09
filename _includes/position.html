@@ -1,0 +1,60 @@
+{%- comment -%}
+  One position from experience.yml.
+  Usage: {% include position.html position=pos detail=true %}
+  With detail=false only the heading lines are shown, with a link to the
+  Experience page.
+{%- endcomment -%}
+{%- assign pos = include.position -%}
+<article class="entry{% if include.detail %} entry--timeline{% endif %}{% if pos.end == 'Present' %} is-current{% endif %}" id="{{ pos.id }}">
+  <p class="entry__when">{{ pos.start }}{% if pos.end %} – {{ pos.end }}{% endif %}</p>
+  <div class="entry__body">
+    <h3 class="entry__title">{{ pos.org }}{% if pos.location %}, {{ pos.location }}{% endif %}</h3>
+    <p class="entry__meta">{{ pos.role }}{% if pos.advisor %}<br>Advisor: {{ pos.advisor }}{% endif %}</p>
+    {%- if include.detail %}
+      {%- if pos.summary %}
+    <p class="entry__summary">{{ pos.summary | markdownify | remove: '<p>' | remove: '</p>' | strip }}</p>
+      {%- endif %}
+      {%- if pos.points %}
+    <ul class="points">
+        {%- for point in pos.points %}
+      <li>{{ point | markdownify | remove: '<p>' | remove: '</p>' | strip }}</li>
+        {%- endfor %}
+    </ul>
+      {%- endif %}
+      {%- for project in pos.projects %}
+    <section class="project">
+      <h4 class="project__title">{{ project.title }}</h4>
+        {%- if project.paper %}
+      <p class="project__paper">{% include paper-link.html id=project.paper %}</p>
+        {%- endif %}
+        {%- if project.summary %}
+      <p class="project__summary">{{ project.summary | markdownify | remove: '<p>' | remove: '</p>' | strip }}</p>
+        {%- endif %}
+        {%- if project.points %}
+      <ul class="points">
+          {%- for point in project.points %}
+        <li>{{ point | markdownify | remove: '<p>' | remove: '</p>' | strip }}</li>
+          {%- endfor %}
+      </ul>
+        {%- endif %}
+    </section>
+      {%- endfor %}
+      {%- if pos.stack %}
+    <ul class="stack" aria-label="Tools">
+        {%- for tool in pos.stack %}
+      <li>{{ tool }}</li>
+        {%- endfor %}
+    </ul>
+      {%- endif %}
+    {%- else %}
+      {%- if pos.projects %}
+    <ul class="plain">
+        {%- for project in pos.projects %}
+      <li>{{ project.title }}</li>
+        {%- endfor %}
+    </ul>
+      {%- endif %}
+    <p class="entry__more"><a href="{{ '/experience/' | relative_url }}#{{ pos.id }}">Details</a></p>
+    {%- endif %}
+  </div>
+</article>

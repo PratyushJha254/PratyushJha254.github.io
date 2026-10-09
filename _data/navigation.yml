@@ -1,36 +1,12 @@
-# The following is the order of the links in the header of the website.
-#
-# Changing the order here will adjust the order and you can also add additional
-# links. Removing a link prevents it from showing in the header, but does not
-# prevent it from being included in the site.
-#
-# NOTE that only one of the CV options should be selected, the first is for the
-#      Markdown formatted page while the second is generated using JSON.
+# The links in the header, in order.
+# only_if: posts  -> the link is hidden while there are no published posts.
 
-main:
-  # - title: "Publications"
-  #   url: /publications/
-
-  # - title: "Talks"
-  #   url: /talks/    
-
-  # - title: "Teaching"
-  #   url: /teaching/    
-    
-  # - title: "Portfolio"
-  #   url: /portfolio/
-        
-  # - title: "Blog Posts"
-  #   url: /year-archive/
-
-  - title: "About"
-    url: /
-  
-  - title: "Resume"
-    url: /files/pratyush_resume.pdf
-    
-  # - title: "CV"
-  #   url: /cv-json/
-    
-  # - title: "Guide"
-  #   url: /markdown/
+- label: Experience
+  url: /experience/
+- label: Publications
+  url: /publications/
+- label: CV
+  url: /cv/
+- label: Blog
+  url: /blog/
+  only_if: posts

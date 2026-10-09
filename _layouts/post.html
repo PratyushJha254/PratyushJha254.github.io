@@ -1,0 +1,43 @@
+---
+layout: default
+---
+{%- assign words = content | strip_html | number_of_words -%}
+{%- assign minutes = words | plus: 199 | divided_by: 200 -%}
+<article class="post">
+  <header class="page-head post__head">
+    <h1>{{ page.title }}</h1>
+    <p class="post__meta">
+      <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%-d %B %Y" }}</time>
+      <span>{{ minutes }} min read</span>
+    </p>
+    {%- if page.tags.size > 0 %}
+    <ul class="tags">
+      {%- for tag in page.tags %}
+      <li><a href="{{ '/blog/tags/' | relative_url }}#{{ tag | slugify }}">{{ tag }}</a></li>
+      {%- endfor %}
+    </ul>
+    {%- endif %}
+  </header>
+
+  <div class="prose">
+{{ content }}
+  </div>
+
+  <nav class="post__nav" aria-label="More posts">
+    {%- if page.previous %}
+    <a class="post__nav-prev" href="{{ page.previous.url | relative_url }}">
+      <span>Previous post</span>
+      {{ page.previous.title }}
+    </a>
+    {%- endif %}
+    {%- if page.next %}
+    <a class="post__nav-next" href="{{ page.next.url | relative_url }}">
+      <span>Next post</span>
+      {{ page.next.title }}
+    </a>
+    {%- endif %}
+    <a class="post__nav-all" href="{{ '/blog/' | relative_url }}">All posts</a>
+  </nav>
+  {% include comments.html %}
+</article>
+{% if page.math %}{% include mathjax.html %}{% endif %}

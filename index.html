@@ -1,0 +1,54 @@
+---
+layout: default
+---
+{%- assign profile = site.data.profile -%}
+<section class="hero">
+  <div class="hero__intro">
+    <div class="hero__id">
+      {%- if profile.photo %}
+      <picture class="portrait">
+        {%- if profile.photo_webp %}
+        <source srcset="{{ profile.photo_webp | relative_url }}" type="image/webp">
+        {%- endif %}
+        <img src="{{ profile.photo | relative_url }}" alt="{{ profile.photo_alt }}" width="440" height="550">
+      </picture>
+      {%- endif %}
+      <div>
+        <h1 class="hero__name">{{ profile.name }}</h1>
+        <p class="hero__role">{{ profile.role }}</p>
+      </div>
+    </div>
+    <p class="hero__lede">{{ profile.tagline }}</p>
+    {% include link-list.html class="link-row" labels=true %}
+    <p class="hero__actions">{% include cv-button.html %}</p>
+  </div>
+  {% include xy-model.html %}
+  {%- if profile.about %}
+  <section class="hero__about" aria-labelledby="about">
+    <h2 id="about">About</h2>
+    {{ profile.about | markdownify }}
+  </section>
+  {%- endif %}
+</section>
+
+{% include news.html %}
+
+<section class="block" aria-labelledby="papers">
+  <h2 id="papers">Papers</h2>
+  {%- assign last_year = "" %}
+  {%- for pub in site.data.publications %}
+    {%- if pub.year == last_year %}{% assign when = "" %}{% else %}{% assign when = pub.year %}{% endif %}
+    {% include publication.html publication=pub when=when compact=true %}
+    {%- assign last_year = pub.year %}
+  {%- endfor %}
+  <p class="block__more"><a href="{{ '/publications/' | relative_url }}">All publications, with citations</a></p>
+</section>
+
+{%- if site.posts.size > 0 %}
+<section class="block" aria-labelledby="writing">
+  <h2 id="writing">Recent writing</h2>
+  {%- assign recent = site.posts | slice: 0, 3 %}
+  {% include post-list.html posts=recent %}
+  <p class="block__more"><a href="{{ '/blog/' | relative_url }}">All posts</a></p>
+</section>
+{%- endif %}

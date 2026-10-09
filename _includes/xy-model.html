@@ -1,0 +1,68 @@
+{%- comment -%}
+  The simulation on the home page. The physics is in assets/js/xy-model.js.
+  The mark under the slider sits at the BKT temperature:
+  (0.893 - min) / (max - min) = (0.893 - 0.05) / (2 - 0.05) = 0.432
+{%- endcomment -%}
+{%- assign xy_paper = site.data.publications | where: "id", "jha2026xy" | first -%}
+<figure class="xy" data-xy>
+  <canvas class="xy__canvas" width="512" height="512" role="img"
+    aria-label="A 64 by 64 lattice of spins in the two-dimensional XY model, coloured by spin angle, with dots marking vortices and antivortices."></canvas>
+  <noscript><p class="xy__fallback">The simulation needs JavaScript.</p></noscript>
+
+  <div class="xy__controls">
+    <label for="xy-temperature">Temperature</label>
+    <div class="xy__slider" style="--bkt: 0.432">
+      <input id="xy-temperature" type="range" min="0.05" max="2" step="0.01" value="0.6" data-xy-temperature>
+      <span class="xy__bkt" aria-hidden="true"><i>T</i><sub>BKT</sub></span>
+    </div>
+    <output for="xy-temperature" data-xy-value>0.60</output>
+    <div class="xy__buttons">
+      <button type="button" class="icon-button" data-xy-toggle aria-label="Pause" title="Pause">
+        <span class="xy__icon-pause">{% include icon.html name="pause" %}</span>
+        <span class="xy__icon-play">{% include icon.html name="play" %}</span>
+      </button>
+      <button type="button" class="icon-button" data-xy-restart aria-label="Restart from random spins" title="Restart from random spins">
+        {%- include icon.html name="rotate-ccw" -%}
+      </button>
+    </div>
+  </div>
+
+  <dl class="xy__readout">
+    <div>
+      <dt>Sweeps</dt>
+      <dd data-xy-sweeps>0</dd>
+    </div>
+    <div>
+      <dt>Vortices</dt>
+      <dd data-xy-vortices>0</dd>
+    </div>
+    <div>
+      <dt>|<i>m</i>|</dt>
+      <dd data-xy-magnetization>0.00</dd>
+    </div>
+  </dl>
+
+  <figcaption>
+    <p>
+      The 2D XY model on a 64 × 64 torus, simulated live in your browser by
+      Metropolis Monte Carlo. Colour shows spin angle;
+      <span class="xy__key xy__key--vortex"></span> marks a vortex and
+      <span class="xy__key xy__key--antivortex"></span> an antivortex.
+    </p>
+    <p>
+      It starts from random spins and thermalizes in real time, so the first
+      few thousand sweeps show free vortices and antivortices finding each
+      other and annihilating, not equilibrium. Once settled, below the BKT
+      transition (<i>T</i> ≈ 0.89 <i>J</i>/<i>k</i><sub>B</sub>) vortices
+      appear only as bound pairs; above it they unbind and proliferate. Drag
+      across the lattice to stir it.
+    </p>
+    {%- if xy_paper %}
+    <p>
+      I trained a diffusion model on exactly this system:
+      <a href="https://arxiv.org/abs/{{ xy_paper.arxiv }}">arXiv:{{ xy_paper.arxiv }}</a>.
+    </p>
+    {%- endif %}
+  </figcaption>
+</figure>
+<script src="{{ '/assets/js/xy-model.js' | relative_url }}" defer></script>

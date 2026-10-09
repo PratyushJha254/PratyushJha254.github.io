@@ -1,0 +1,48 @@
+---
+title: Experience
+permalink: /experience/
+description: Research and industry experience of Pratyush Jha.
+---
+<p class="lede">{{ site.data.profile.interests }}</p>
+
+{%- assign research = site.data.experience | where: "kind", "research" %}
+{%- if research.size > 0 %}
+<section class="block" aria-labelledby="research">
+  <h2 id="research">Research</h2>
+  <div class="timeline">
+    {%- for pos in research %}
+    {% include position.html position=pos detail=true %}
+    {%- endfor %}
+  </div>
+</section>
+{%- endif %}
+
+{%- assign industry = site.data.experience | where: "kind", "industry" %}
+{%- if industry.size > 0 %}
+<section class="block" aria-labelledby="industry">
+  <h2 id="industry">Industry</h2>
+  <div class="timeline">
+    {%- for pos in industry %}
+    {% include position.html position=pos detail=true %}
+    {%- endfor %}
+  </div>
+</section>
+{%- endif %}
+
+{%- if site.data.projects.size > 0 %}
+<section class="block" aria-labelledby="projects">
+  <h2 id="projects">Selected projects</h2>
+  {%- for project in site.data.projects %}
+  <article class="entry">
+    <p class="entry__when">{{ project.when }}</p>
+    <div class="entry__body">
+      <h3 class="entry__title">
+        {%- if project.url %}<a href="{{ project.url }}">{{ project.title }}</a>{% else %}{{ project.title }}{% endif -%}
+      </h3>
+      <p class="entry__meta">{{ project.context }}</p>
+      <p>{{ project.summary | markdownify | remove: '<p>' | remove: '</p>' | strip }}</p>
+    </div>
+  </article>
+  {%- endfor %}
+</section>
+{%- endif %}

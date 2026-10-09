@@ -1,0 +1,13 @@
+{%- comment -%} A short link to a paper. Usage: {% include paper-link.html id="jha2026xy" %} {%- endcomment -%}
+{%- assign paper = site.data.publications | where: "id", include.id | first -%}
+{%- if paper -%}
+  {%- if paper.arxiv -%}
+    <a class="pill" href="https://arxiv.org/abs/{{ paper.arxiv }}">{% include icon.html name="file-text" %}arXiv:{{ paper.arxiv }}</a>
+  {%- elsif paper.doi -%}
+    <a class="pill" href="https://doi.org/{{ paper.doi }}">{% include icon.html name="link" %}DOI {{ paper.doi }}</a>
+  {%- elsif paper.url -%}
+    <a class="pill" href="{{ paper.url }}">{% include icon.html name="link" %}{{ paper.venue }}</a>
+  {%- else -%}
+    <a class="pill" href="{{ '/publications/' | relative_url }}#{{ paper.id }}">{% include icon.html name="file-text" %}{{ paper.venue }}</a>
+  {%- endif -%}
+{%- endif -%}

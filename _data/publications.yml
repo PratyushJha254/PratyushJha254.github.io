@@ -1,0 +1,71 @@
+# Papers, newest first. The order here is the order on the site.
+#
+# id        a short key; experience.yml refers to papers by it
+# authors   as they should appear; your own name is set in bold automatically.
+#           Add * after a name to mark equal contribution.
+# venue     journal, conference, or "Preprint"
+# date      shown after the venue, for example "Aug 2026"
+# year      groups papers by year
+# arxiv     the arXiv number only, in quotes
+# doi       the DOI only, without https://doi.org/
+# url       any other link (used when there is no arXiv number or DOI)
+# pdf, code optional links
+# abstract  optional; adds an "Abstract" button
+# note      optional remark shown after the venue
+# bibtex    optional; adds a "Cite" button
+
+- id: jha2026turbulence
+  title: "How well can Diffusion Models learn Lagrangian-Tracer Statistics in Non-reciprocal Turbulence?"
+  authors:
+    - P. Jha*
+    - B. Maji*
+    - R. Pandit
+  venue: Preprint
+  date: Aug 2026
+  year: 2026
+  arxiv: "2608.27378"
+  note: "*Equal contribution."
+  bibtex: |
+    @misc{jha2026turbulence,
+      title         = {How well can Diffusion Models learn Lagrangian-Tracer Statistics in Non-reciprocal Turbulence?},
+      author        = {Jha, P. and Maji, B. and Pandit, R.},
+      year          = {2026},
+      eprint        = {2608.27378},
+      archivePrefix = {arXiv}
+    }
+
+- id: jha2026courtroom
+  title: "Coherence at the Financial Misinformation Detection Challenge Task: A Courtroom-Inspired Framework for Reference-Free Verification"
+  authors:
+    - P. Jha
+  venue: Workshop on Misinformation Detection, ICWSM 2026
+  date: Jun 2026
+  year: 2026
+  doi: "10.36190/2026.40"
+  note: Sole author; 3rd place in the shared task.
+  bibtex: |
+    @inproceedings{jha2026courtroom,
+      title     = {Coherence at the Financial Misinformation Detection Challenge Task: A Courtroom-Inspired Framework for Reference-Free Verification},
+      author    = {Jha, P.},
+      booktitle = {Workshop on Misinformation Detection, ICWSM 2026},
+      year      = {2026},
+      doi       = {10.36190/2026.40}
+    }
+
+- id: jha2026xy
+  title: "Capturing the Topological Phase Transition and Thermodynamics of the 2D XY Model via Manifold-Aware Score-Based Generative Modeling"
+  authors:
+    - P. Jha
+  venue: Preprint
+  date: Feb 2026
+  year: 2026
+  arxiv: "2602.07548"
+  note: Sole author.
+  bibtex: |
+    @misc{jha2026xy,
+      title         = {Capturing the Topological Phase Transition and Thermodynamics of the 2D XY Model via Manifold-Aware Score-Based Generative Modeling},
+      author        = {Jha, P.},
+      year          = {2026},
+      eprint        = {2602.07548},
+      archivePrefix = {arXiv}
+    }

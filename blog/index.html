@@ -1,0 +1,16 @@
+---
+title: Blog
+permalink: /blog/
+description: Notes by Pratyush Jha on physics and machine learning.
+---
+{%- if site.posts.size > 0 %}
+<p class="lede">
+  <a href="{{ '/blog/tags/' | relative_url }}">Browse by tag</a> or
+  <a href="{{ '/feed.xml' | relative_url }}">subscribe by RSS</a>.
+</p>
+<section class="block block--first">
+  {% include post-list.html posts=site.posts tags=true %}
+</section>
+{%- else %}
+<p class="lede">No posts yet. <a href="{{ '/feed.xml' | relative_url }}">Subscribe by RSS</a> to hear about the first one.</p>
+{%- endif %}

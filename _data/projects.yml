@@ -1,0 +1,16 @@
+# Smaller projects, shown at the bottom of the Experience page.
+# `url` is optional and turns the title into a link.
+
+- title: Feature-based dynamic pricing
+  context: Course project, Reinforcement Learning (Prof. Manu Kumar Gupta)
+  when: Feb 2024 – Mar 2024
+  summary: >-
+    Implemented ellipsoid and EXP4 contextual-bandit algorithms (Cohen et al.,
+    2020) and compared regret under changing distributions.
+
+- title: Monte Carlo simulation of magnetic skyrmions
+  context: Physics & Astronomy Club, IIT Roorkee
+  when: Aug 2023 – Oct 2023
+  summary: >-
+    Metropolis sampling with simulated annealing to form topologically protected
+    skyrmion configurations on a 2D square lattice.

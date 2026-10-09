@@ -1,0 +1,34 @@
+# News on the home page, newest first. The order here is the order shown.
+# The four newest visible items are shown; older ones fold under
+# "Show older news". With no visible items the section disappears.
+#
+# date     shown as written, for example "Aug 2026" or "12 Aug 2026"
+# text     Markdown: *italics*, **bold**, [links](https://...)
+# visible  true or false
+
+- date: Aug 2026
+  text: >-
+    New preprint with Biswajit Maji and Prof. Rahul Pandit:
+    [How well can diffusion models learn Lagrangian-tracer statistics in
+    non-reciprocal turbulence?](https://arxiv.org/abs/2608.27378)
+  visible: true
+
+- date: Jun 2026
+  text: >-
+    My paper on courtroom-inspired verification of financial misinformation
+    appeared at the ICWSM 2026 Workshop on Misinformation Detection, after
+    placing 3rd in the FMD Challenge 2026.
+    [DOI](https://doi.org/10.36190/2026.40)
+  visible: true
+
+- date: May 2026
+  text: >-
+    Joined the Indian Institute of Science, Bangalore, as a Project Associate
+    with Prof. Rahul Pandit.
+  visible: true
+
+- date: Feb 2026
+  text: >-
+    New sole-author preprint on manifold-aware diffusion for the 2D XY model:
+    [arXiv:2602.07548](https://arxiv.org/abs/2602.07548)
+  visible: true

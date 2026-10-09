@@ -1,0 +1,21 @@
+# Referees for the CV page. Hidden for now: set `visible: true` on an entry to
+# show it. With no visible entries the whole section disappears.
+#
+# Email addresses are left out on purpose, because this file is public on
+# GitHub. Add an `email:` line to an entry if you want it shown.
+
+- name: Prof. Rahul Pandit
+  position: National Science Chair, Department of Physics, IISc Bangalore
+  visible: false
+
+- name: Prof. Peayush Choubey
+  position: Assistant Professor, Department of Physics, IIT Roorkee
+  visible: false
+
+- name: Prof. Manu Kumar Gupta
+  position: Assistant Professor, Mehta Family School of DS & ML, IIT Roorkee
+  visible: false
+
+# - name: Prof. John Kildea
+#   position: Associate Professor, McGill University, Montreal
+#   visible: false

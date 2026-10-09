@@ -1,0 +1,33 @@
+{%- comment -%}
+  Your email and profile links, each with its icon.
+  Usage: {% include link-list.html class="link-row" labels=true %}
+  With labels=false only the icons show (the names stay available to screen
+  readers and as tooltips).
+{%- endcomment -%}
+{%- assign profile = site.data.profile -%}
+<ul class="{{ include.class }}">
+  {%- if profile.emails.first %}
+  <li>
+    <a href="mailto:{{ profile.emails.first }}" {% unless include.labels %}aria-label="Email" title="{{ profile.emails.first }}"{% endunless %}>
+      {%- include icon.html name="mail" -%}
+      {%- if include.labels %}<span>{{ profile.emails.first }}</span>{% endif -%}
+    </a>
+  </li>
+  {%- endif %}
+  {%- for link in profile.links %}
+  <li>
+    <a href="{{ link.url }}" {% unless include.labels %}aria-label="{{ link.label }}" title="{{ link.label }}"{% endunless %}>
+      {%- include icon.html name=link.icon -%}
+      {%- if include.labels %}<span>{{ link.label }}</span>{% endif -%}
+    </a>
+  </li>
+  {%- endfor %}
+  {%- if include.feed and site.posts.size > 0 %}
+  <li>
+    <a href="{{ '/feed.xml' | relative_url }}" {% unless include.labels %}aria-label="RSS feed" title="RSS feed"{% endunless %}>
+      {%- include icon.html name="rss" -%}
+      {%- if include.labels %}<span>RSS feed</span>{% endif -%}
+    </a>
+  </li>
+  {%- endif %}
+</ul>

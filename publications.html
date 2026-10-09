@@ -1,0 +1,13 @@
+---
+title: Publications
+permalink: /publications/
+description: Papers and preprints by Pratyush Jha.
+---
+<section class="block block--first">
+  {%- assign last_year = "" %}
+  {%- for pub in site.data.publications %}
+    {%- if pub.year == last_year %}{% assign when = "" %}{% else %}{% assign when = pub.year %}{% endif %}
+    {% include publication.html publication=pub when=when %}
+    {%- assign last_year = pub.year %}
+  {%- endfor %}
+</section>

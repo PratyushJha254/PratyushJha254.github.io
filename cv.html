@@ -1,0 +1,117 @@
+---
+title: Curriculum vitae
+permalink: /cv/
+description: Education, experience, skills and awards of Pratyush Jha.
+---
+{%- assign profile = site.data.profile -%}
+{%- if profile.cv_pdf and profile.cv_pdf != "" %}
+<p class="page-actions">{% include cv-button.html %}</p>
+{%- endif %}
+
+<section class="block" aria-labelledby="education">
+  <h2 id="education">Education</h2>
+  {%- for school in site.data.education %}
+  <article class="entry">
+    <p class="entry__when">{{ school.start }} – {{ school.end }}</p>
+    <div class="entry__body">
+      <h3 class="entry__title">{{ school.institution }}</h3>
+      <p class="entry__meta">{{ school.degree }}{% if school.result %}<br>{{ school.result }}{% endif %}</p>
+      {%- if school.thesis %}
+      <p>Thesis: <cite>{{ school.thesis.title }}</cite>{% if school.thesis.advisor %}, advised by {{ school.thesis.advisor }}{% endif %}.</p>
+      {%- endif %}
+      {%- if school.coursework %}
+      <p>Relevant coursework: {{ school.coursework | join: ", " }}.</p>
+      {%- endif %}
+    </div>
+  </article>
+  {%- endfor %}
+</section>
+
+{%- assign research = site.data.experience | where: "kind", "research" %}
+{%- if research.size > 0 %}
+<section class="block" aria-labelledby="research">
+  <h2 id="research">Research experience</h2>
+  {%- for pos in research %}
+  {% include position.html position=pos detail=false %}
+  {%- endfor %}
+</section>
+{%- endif %}
+
+{%- assign industry = site.data.experience | where: "kind", "industry" %}
+{%- if industry.size > 0 %}
+<section class="block" aria-labelledby="industry">
+  <h2 id="industry">Industry experience</h2>
+  {%- for pos in industry %}
+  {% include position.html position=pos detail=false %}
+  {%- endfor %}
+</section>
+{%- endif %}
+
+<section class="block" aria-labelledby="publications">
+  <h2 id="publications">Publications</h2>
+  {%- assign last_year = "" %}
+  {%- for pub in site.data.publications %}
+    {%- if pub.year == last_year %}{% assign when = "" %}{% else %}{% assign when = pub.year %}{% endif %}
+    {% include publication.html publication=pub when=when compact=true %}
+    {%- assign last_year = pub.year %}
+  {%- endfor %}
+</section>
+
+{%- if site.data.skills.size > 0 %}
+<section class="block" aria-labelledby="skills">
+  <h2 id="skills">Skills</h2>
+  {%- for skill in site.data.skills %}
+  <div class="entry">
+    <h3 class="entry__when entry__when--label">{{ skill.area }}</h3>
+    <div class="entry__body"><p>{{ skill.items }}</p></div>
+  </div>
+  {%- endfor %}
+</section>
+{%- endif %}
+
+{%- if site.data.awards.size > 0 %}
+<section class="block" aria-labelledby="awards">
+  <h2 id="awards">Selected awards</h2>
+  {%- for award in site.data.awards %}
+  <div class="entry entry--tight">
+    <p class="entry__when">{{ award.year }}</p>
+    <div class="entry__body"><p>{{ award.title }}</p></div>
+  </div>
+  {%- endfor %}
+</section>
+{%- endif %}
+
+{%- if site.data.service.size > 0 %}
+<section class="block" aria-labelledby="service">
+  <h2 id="service">Teaching and service</h2>
+  {%- for item in site.data.service %}
+  <article class="entry">
+    <p class="entry__when">{{ item.when }}</p>
+    <div class="entry__body">
+      <h3 class="entry__title">{{ item.role }}</h3>
+      <p class="entry__meta">{{ item.org }}</p>
+      <p>{{ item.summary }}</p>
+    </div>
+  </article>
+  {%- endfor %}
+</section>
+{%- endif %}
+
+{%- assign referees = site.data.references | where_exp: "r", "r.visible == true" %}
+{%- if referees.size > 0 %}
+<section class="block" aria-labelledby="references">
+  <h2 id="references">References</h2>
+  <div class="entry">
+    <p class="entry__when"></p>
+    <ul class="entry__body plain referees">
+      {%- for referee in referees %}
+      <li>
+        <strong>{{ referee.name }}</strong><br>
+        {{ referee.position }}
+        {%- if referee.email %}<br><a href="mailto:{{ referee.email }}">{{ referee.email }}</a>{% endif %}
+      </li>
+      {%- endfor %}
+    </ul>
+  </div>
+</section>
+{%- endif %}

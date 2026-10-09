@@ -1,0 +1,23 @@
+---
+title: Posts by tag
+permalink: /blog/tags/
+description: Blog posts by Pratyush Jha, grouped by tag.
+---
+{%- assign tags = site.tags | sort %}
+{%- if tags.size > 0 %}
+<ul class="tags tags--index">
+  {%- for tag in tags %}
+  <li><a href="#{{ tag[0] | slugify }}">{{ tag[0] }}</a></li>
+  {%- endfor %}
+</ul>
+{%- for tag in tags %}
+{%- assign tag_name = tag[0] %}
+<section class="block" aria-labelledby="{{ tag_name | slugify }}">
+  <h2 id="{{ tag_name | slugify }}">{{ tag_name }}</h2>
+  {%- assign tagged = tag[1] %}
+  {% include post-list.html posts=tagged %}
+</section>
+{%- endfor %}
+{%- else %}
+<p class="lede">No tagged posts yet. <a href="{{ '/blog/' | relative_url }}">Back to the blog</a>.</p>
+{%- endif %}

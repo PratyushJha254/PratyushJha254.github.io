@@ -1,0 +1,17 @@
+# Skill groups for the CV page.
+
+- area: Generative modeling
+  items: >-
+    Score-based and diffusion models (DDPM, DDIM, manifold-aware SGMs), GANs,
+    LoRA fine-tuning, SimPO, transformer encoders (ModernBERT), recurrent
+    networks
+
+- area: Scientific computing
+  items: >-
+    Monte Carlo methods (Metropolis, simulated annealing, MALA), TOPAS particle
+    transport, statistical analysis of turbulence and spin-model observables
+
+- area: Software
+  items: >-
+    Python, PyTorch, TensorFlow; Flask, FastAPI, Celery, Redis, MilvusDB,
+    KServe, NVIDIA DeepStream

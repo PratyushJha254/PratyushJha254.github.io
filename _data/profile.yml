@@ -1,0 +1,70 @@
+# Who you are. Shown on the home page, in the header and in the footer.
+
+name: Pratyush Jha
+
+# How your name appears in author lists, so it can be set in bold.
+cite_name: P. Jha
+
+# Under your name on the home page. Use <br> to break the line.
+role: Pre-doctoral researcher<br>Indian Institute of Science, Bangalore
+
+# The sentence under your name and photo.
+tagline: >-
+  I study what generative models learn about physical systems, and where they
+  fail.
+
+# The "About" section on the home page. Markdown; leave a blank line between
+# paragraphs.
+about: |
+  I'm a pre-doctoral researcher at the Indian Institute of Science, Bangalore,
+  working with Prof. Rahul Pandit. My work sits where statistical physics
+  meets machine learning: I take physical systems whose statistics are known
+  exactly or characterized well, such as spin models and turbulent flows, and
+  use them as controlled testbeds for generative models. Recently I have
+  trained diffusion models on non-reciprocal turbulence, and on the 2D XY
+  model, where diffusing directly on the torus reproduces the heat capacity
+  across the BKT transition.
+
+  Before IISc, I spent a year and a half as an AI engineer at Ola Krutrim,
+  where I fine-tuned LLaMA-3 with LoRA and preference optimization, and built
+  production systems for retrieval-augmented generation, model serving and
+  video analytics. I studied Engineering Physics at IIT Roorkee, graduating
+  second in my department.
+
+  If you work on related problems, or would simply like to talk about physics
+  and machine learning, I would be glad to hear from you.
+
+# Opens the Experience page.
+interests: >-
+  Statistical physics of generative models; using physical systems with exactly
+  known or well-characterized statistics (spin models, turbulence) as controlled
+  testbeds for what neural networks learn and where they fail; scientific
+  machine learning.
+
+# Your photo, and a short description of it for screen readers.
+photo: /assets/img/portrait.jpg
+photo_webp: /assets/img/portrait.webp
+photo_alt: Pratyush Jha on the Thames embankment in London
+
+# The first address is the one shown on the home page; all of them are in
+# the footer.
+emails:
+  - pratyushjha@iisc.ac.in
+  - pratyushjha254@gmail.com
+
+# Links shown with icons on the home page and in the footer.
+# icon: github, google-scholar, linkedin, orcid, arxiv, researchgate, x,
+#       bluesky, or link (a plain chain link for anything else).
+links:
+  - label: Google Scholar
+    url: https://scholar.google.com/citations?user=iWhnIlsAAAAJ&hl=en
+    icon: google-scholar
+  - label: GitHub
+    url: https://github.com/PratyushJha254
+    icon: github
+  - label: LinkedIn
+    url: https://www.linkedin.com/in/pratyush-jha-a93417213/
+    icon: linkedin
+
+# Your CV as a PDF in assets/. Leave empty ("") to hide the download buttons.
+cv_pdf: /assets/Pratyush_cv_7_Oct_2026.pdf

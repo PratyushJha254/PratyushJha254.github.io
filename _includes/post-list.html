@@ -1,0 +1,24 @@
+{%- comment -%}
+  A list of posts.
+  Usage: {% include post-list.html posts=site.posts tags=true %}
+{%- endcomment -%}
+<ol class="post-list">
+  {%- for post in include.posts %}
+  <li class="entry">
+    <p class="entry__when"><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%-d %b %Y" }}</time></p>
+    <div class="entry__body">
+      <h3 class="entry__title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+      {%- if post.description %}
+      <p class="entry__meta">{{ post.description }}</p>
+      {%- endif %}
+      {%- if include.tags and post.tags.size > 0 %}
+      <ul class="tags">
+        {%- for tag in post.tags %}
+        <li><a href="{{ '/blog/tags/' | relative_url }}#{{ tag | slugify }}">{{ tag }}</a></li>
+        {%- endfor %}
+      </ul>
+      {%- endif %}
+    </div>
+  </li>
+  {%- endfor %}
+</ol>

@@ -1,0 +1,31 @@
+{%- comment -%}
+  The News section of the home page, from _data/news.yml. Shows nothing when
+  no item is visible.
+{%- endcomment -%}
+{%- assign items = site.data.news | where_exp: "item", "item.visible != false" -%}
+{%- if items.size > 0 %}
+<section class="block" aria-labelledby="news">
+  <h2 id="news">News</h2>
+  <ol class="news">
+    {%- for item in items limit: 4 %}
+    <li class="entry entry--tight">
+      <p class="entry__when">{{ item.date }}</p>
+      <div class="entry__body">{{ item.text | markdownify }}</div>
+    </li>
+    {%- endfor %}
+  </ol>
+  {%- if items.size > 4 %}
+  <details class="more">
+    <summary>Show older news</summary>
+    <ol class="news">
+      {%- for item in items offset: 4 %}
+      <li class="entry entry--tight">
+        <p class="entry__when">{{ item.date }}</p>
+        <div class="entry__body">{{ item.text | markdownify }}</div>
+      </li>
+      {%- endfor %}
+    </ol>
+  </details>
+  {%- endif %}
+</section>
+{%- endif %}

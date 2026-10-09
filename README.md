@@ -1,96 +1,175 @@
-# Academic Pages
-**Academic Pages is a GitHub Pages template for personal and professional portfolio-oriented websites.**
+# Pratyush Jha — personal site
 
-![Academic Pages template example](images/themes/homepage-light.png "Academic Pages template example")
+A multi-page site built with [Jekyll](https://jekyllrb.com), which GitHub Pages
+runs for you. There is nothing to install: you edit text files, push, and the
+site rebuilds.
 
-# Getting Started
+| Page         | Address          | Built from                                                     |
+|--------------|------------------|----------------------------------------------------------------|
+| Home         | `/`              | `index.html`, `_data/profile.yml`, `news.yml`, `publications.yml` |
+| Experience   | `/experience/`   | `_data/experience.yml`, `_data/projects.yml`                   |
+| Publications | `/publications/` | `_data/publications.yml`                                       |
+| CV           | `/cv/`           | every file in `_data/`                                         |
+| Blog         | `/blog/`         | the Markdown files in `_posts/`                                |
 
-1. Register a GitHub account if you don't have one and confirm your e-mail (required!)
-1. Click the "Use this template" button in the top right.
-1. On the "New repository" page, enter your public repository name as "[your GitHub username].github.io", which will also be your website's URL.
-1. Set site-wide configuration and add your content.
-1. Upload any files (like PDFs, .zip files, etc.) to the `files/` directory. They will appear at https://[your GitHub username].github.io/files/example.pdf.
-1. Check status by going to the repository settings, in the "GitHub pages" section
-1. (Optional) Use the Jupyter notebooks or python scripts in the `markdown_generator` folder to generate markdown files for publications and talks from a TSV file.
+## Showing and hiding things
 
-See more info at https://academicpages.github.io/
+| What           | Where                       | Switch                                  |
+|----------------|-----------------------------|-----------------------------------------|
+| A blog post    | the top of its file         | `published: true` or `published: false` |
+| A news item    | `_data/news.yml`            | `visible: true` or `visible: false`     |
+| A referee      | `_data/references.yml`      | `visible: true` or `visible: false`     |
+| The CV buttons | `_data/profile.yml`         | `cv_pdf: ""` hides them                 |
 
-## Running locally
+When nothing is left to show, the whole section goes too: with no published
+posts the Blog link, "Recent writing" and the RSS icon disappear; with no
+visible news the News section disappears; with no visible referees the
+References section disappears. A post with `published: false` is not built at
+all, so it cannot be found by its address or in the RSS feed either.
 
-When you are initially working on your website, it is very useful to be able to preview the changes locally before pushing them to GitHub. To work locally you will need to:
+## Put it online
 
-1. Clone the repository and made updates as detailed above.
+1. On GitHub, create a public repository named `<your-username>.github.io`.
+2. Upload everything in this folder to it, keeping the folder structure. The
+   files must sit at the top level of the repository, so `_config.yml` is at
+   the root, not inside a subfolder.
+3. In the repository, open **Settings → Pages**. Under **Build and deployment**,
+   choose **Deploy from a branch**, branch `main`, folder `/ (root)`, and save.
+4. Wait a minute or two, then open `https://<your-username>.github.io`.
 
-### Using a different IDE
-1. Make sure you have ruby-dev, bundler, and nodejs installed
-    
-    On most Linux distribution and [Windows Subsystem Linux](https://learn.microsoft.com/en-us/windows/wsl/about) the command is:
-    ```bash
-    sudo apt install ruby-dev ruby-bundler nodejs
-    ```
-    If you see error `Unable to locate package ruby-bundler`, `Unable to locate package nodejs `, run the following:
-    ```bash
-    sudo apt update && sudo apt upgrade -y
-    ```
-    then try run `sudo apt install ruby-dev ruby-bundler nodejs` again.
+Every later push rebuilds the site. If a build fails, the **Actions** tab shows
+the error and the line it came from.
 
-    On MacOS the commands are:
-    ```bash
-    brew install ruby
-    brew install node
-    gem install bundler
-    ```
-1. Run `bundle install` to install ruby dependencies. If you get errors, delete Gemfile.lock and try again.
+## Change your details
 
-    If you see file permission error like `Fetching bundler-2.6.3.gem ERROR:  While executing gem (Gem::FilePermissionError) You don't have write permissions for the /var/lib/gems/3.2.0 directory.` or `Bundler::PermissionError: There was an error while trying to write to /usr/local/bin.`
-    Install Gems Locally (Recommended):
-    ```bash
-    bundle config set --local path 'vendor/bundle'
-    ```
-    then try run `bundle install` again. If succeeded, you should see a folder called `vendor` and `.bundle`.
+All of the content is in `_data/`. Each file starts with a comment explaining
+its fields.
 
-1. Run `jekyll serve -l -H localhost` to generate the HTML and serve it from `localhost:4000` the local server will automatically rebuild and refresh the pages on change to Markdown (*.md) and HTML files, while changes to the core template and configuration (i.e., `_config.yml`) will require stopping and restarting Jekyll.
-    You may also try `bundle exec jekyll serve -l -H localhost` to ensure jekyll to use specific dependencies on your own local machine.
+| File               | Holds                                                     |
+|--------------------|-----------------------------------------------------------|
+| `profile.yml`      | Name, role, tagline, About text, photo, email, links with icons, CV PDF |
+| `news.yml`         | News items for the home page                              |
+| `publications.yml` | Papers, with arXiv numbers, DOIs and BibTeX               |
+| `experience.yml`   | Research and industry positions, projects and tools       |
+| `projects.yml`     | Smaller projects                                          |
+| `education.yml`    | Degrees, thesis, coursework                               |
+| `skills.yml`       | Skill groups                                              |
+| `awards.yml`       | Awards                                                    |
+| `service.yml`      | Teaching and service                                      |
+| `references.yml`   | Referees (hidden for now)                                 |
+| `navigation.yml`   | The links in the header                                   |
 
-If you are running on Linux it may be necessary to install some additional dependencies prior to being able to run locally: `sudo apt install build-essential gcc make`
+To change your photo, replace `assets/img/portrait.jpg` and
+`assets/img/portrait.webp` with a 4:5 portrait (about 440 × 550 pixels or
+larger). To replace the CV, put the new PDF in `assets/` and update `cv_pdf`.
 
-## Using Docker
+YAML is strict about indentation: use spaces, never tabs, and keep list items
+lined up with their neighbours. Put a value in quotes if it contains a colon.
 
-Working from a different OS, or just want to avoid installing dependencies? You can use the provided `Dockerfile` to build a container that will run the site for you if you have [Docker](https://www.docker.com/) installed.
+## Write a blog post
 
-You can build and execute the container by running the following command in the repository:
+1. Add a file to `_posts/` named `YYYY-MM-DD-a-short-title.md`.
+2. Start it with these lines, then write in Markdown underneath:
 
-```bash
-chmod -R 777 .
-docker compose up
+   ```
+   ---
+   title: "What diffusion models miss about intermittency"
+   description: One sentence that appears under the title in lists.
+   tags: [diffusion, turbulence]
+   published: true
+   ---
+   ```
+
+3. Push. The post appears on the Blog page, in "Recent writing" on the home
+   page, under each of its tags, and in the RSS feed at `/feed.xml`.
+
+`_posts/2026-10-05-sample-post.md` shows equations, code, tables and footnotes.
+It is hidden (`published: false`); keep it as a reference or delete it.
+
+Notes:
+
+- **Maths** is LaTeX between double dollar signs, for both inline and display
+  equations: `$$\theta_i$$`. Single dollar signs are not maths here.
+- **Dates**: a post dated in the future stays hidden until that date (Indian
+  time, set in `_config.yml`).
+- **Drafts**: keep `published: false` while writing. To preview hidden posts on
+  your own computer, run `bundle exec jekyll serve --unpublished`.
+- **Curly braces**: Jekyll reads `{{` and `{%` as template code. If a post
+  needs them literally, for instance in LaTeX, wrap that part in
+  `{% raw %}` … `{% endraw %}`.
+- **Images**: put them in `assets/img/` and write
+  `![Describe the figure](/assets/img/figure.png)`.
+
+## Turn on comments (optional)
+
+Posts can have a comment box powered by [giscus](https://giscus.app). Readers
+sign in with GitHub, and the comments live in your repository's Discussions,
+so there are no ads and nothing else to host.
+
+1. In the repository that serves the site, open **Settings → General →
+   Features** and tick **Discussions**.
+2. Install the giscus app on that repository: <https://github.com/apps/giscus>.
+3. Go to <https://giscus.app>, type the repository name, and pick the
+   **Announcements** category. Further down, the page shows a snippet
+   containing `data-repo-id` and `data-category-id`.
+4. Copy those two values, and the repository name, into the `comments` section
+   of `_config.yml`, then push.
+
+Add `comments: false` to a post's settings to leave the box off that post.
+
+## Preview on your own computer (optional)
+
+The pages are templates, so opening `index.html` directly in a browser shows
+unfinished markup. Jekyll has to build the site first.
+
+1. Install Ruby (version 3.0 or later):
+   - **macOS**: `brew install ruby`, then follow the note Homebrew prints about
+     adding it to your `PATH`. The Ruby that ships with macOS is too old.
+   - **Ubuntu / Debian**: `sudo apt install ruby-full build-essential zlib1g-dev`
+   - **Windows**: install "Ruby+Devkit" from <https://rubyinstaller.org> and
+     accept the default options.
+2. In a terminal, go to this folder and run:
+
+   ```
+   gem install bundler
+   bundle config set --local path vendor/bundle
+   bundle install
+   bundle exec jekyll serve
+   ```
+
+   The first `bundle install` downloads Jekyll and takes a few minutes.
+3. Open <http://localhost:4000>.
+
+Leave `jekyll serve` running while you edit. It rebuilds whenever you save a
+file; refresh the browser to see the change. Stop it with Ctrl+C. A change to
+`_config.yml` only takes effect after you stop and start it again.
+
+To see a post dated in the future or marked `published: false`, start it with
+`bundle exec jekyll serve --future --unpublished`.
+
+## Where things are
+
+```
+_config.yml        site title, description, timezone
+_data/             all content (see the table above)
+_posts/            blog posts
+_layouts/          page skeletons: default, page, post
+_includes/         reusable pieces: header, footer, a paper, a position, news,
+                   icons (icon.html), the CV button
+index.html         home page
+experience.html, publications.html, cv.html
+blog/              blog index and tag index
+assets/css/main.css      all styling; colours and fonts are set at the top
+assets/js/xy-model.js    the XY-model simulation on the home page
+assets/js/site.js        light/dark switch, header line, "Copy BibTeX" buttons
+assets/fonts/            Newsreader and Instrument Sans (SIL Open Font License)
+assets/img/              portrait and favicon
 ```
 
-You should now be able to access the website from `localhost:4000`.
+To add a page, copy `experience.html`, change its `title` and `permalink`, and
+add it to `_data/navigation.yml`.
 
-### Using the DevContainer in VS Code
-
-If you are using [Visual Studio Code](https://code.visualstudio.com/) you can use the [Dev Container](https://code.visualstudio.com/docs/devcontainers/containers) that comes with this Repository. Normally VS Code detects that a development container configuration is available and asks you if you want to use the container. If this doesn't happen you can manually start the container by **F1->DevContainer: Reopen in Container**. This restarts your VS Code in the container and automatically hosts your academic page locally on http://localhost:4000. All changes will be updated live to that page after a few seconds.
-
-# Maintenance
-
-Bug reports and feature requests to the template should be [submitted via GitHub](https://github.com/academicpages/academicpages.github.io/issues/new/choose). For questions concerning how to style the template, please feel free to start a [new discussion on GitHub](https://github.com/academicpages/academicpages.github.io/discussions).
-
-This repository was forked (then detached) by [Stuart Geiger](https://github.com/staeiou) from the [Minimal Mistakes Jekyll Theme](https://mmistakes.github.io/minimal-mistakes/), which is © 2016 Michael Rose and released under the MIT License (see LICENSE.md). It is currently being maintained by [Robert Zupko](https://github.com/rjzupkoii) and additional maintainers would be welcomed.
-
-## Bugfixes and enhancements
-
-If you have bugfixes and enhancements that you would like to submit as a pull request, you will need to [fork](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo) this repository as opposed to using it as a template. This will also allow you to [synchronize your copy](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/syncing-a-fork) of template to your fork as well.
-
-Unfortunately, one logistical issue with a template theme like Academic Pages that makes it a little tricky to get bug fixes and updates to the core theme. If you use this template and customize it, you will probably get merge conflicts if you attempt to synchronize, although [rebasing](https://git-scm.com/docs/git-rebase) the changes from this template will work along with manually [cherry picking](https://git-scm.com/docs/git-cherry-pick) the relevant commits. If you are not comfortable with the Git command line, you can save your various `.yml` configuration files and Markdown files, delete the repository, and fork it again. 
-
----
-<div align="center">
-    
-![pages-build-deployment](https://github.com/academicpages/academicpages.github.io/actions/workflows/pages/pages-build-deployment/badge.svg)
-[![GitHub contributors](https://img.shields.io/github/contributors/academicpages/academicpages.github.io.svg)](https://github.com/academicpages/academicpages.github.io/graphs/contributors)
-[![GitHub release](https://img.shields.io/github/v/release/academicpages/academicpages.github.io)](https://github.com/academicpages/academicpages.github.io/releases/latest)
-[![GitHub license](https://img.shields.io/github/license/academicpages/academicpages.github.io?color=blue)](https://github.com/academicpages/academicpages.github.io/blob/master/LICENSE)
-
-[![GitHub stars](https://img.shields.io/github/stars/academicpages/academicpages.github.io)](https://github.com/academicpages/academicpages.github.io)
-[![GitHub forks](https://img.shields.io/github/forks/academicpages/academicpages.github.io)](https://github.com/academicpages/academicpages.github.io/fork)
-</div>
+The home-page simulation is a 64 × 64 XY model sampled by Metropolis Monte
+Carlo, starting from random spins and thermalizing in real time. Its caption
+is in `_includes/xy-model.html`. To remove it, delete the
+`{% include xy-model.html %}` line from `index.html`.

@@ -1,0 +1,9 @@
+{%- comment -%} The "Download CV" button. Shown only when cv_pdf is set in profile.yml. {%- endcomment -%}
+{%- assign cv = site.data.profile.cv_pdf -%}
+{%- if cv and cv != "" -%}
+<a class="button" href="{{ cv | relative_url }}" download>
+  {%- include icon.html name="download" -%}
+  <span>Download CV</span>
+  <span class="button__note">PDF</span>
+</a>
+{%- endif -%}

@@ -26,7 +26,7 @@
       points:
         - >-
           First application of generative diffusion models to non-reciprocal
-          binary-fluid turbulence (2D Non-Reciprocal Cahn–Hilliard–Navier–Stokes),
+          binary-fluid turbulence (2D Non-Reciprocal Cahn–<wbr>Hilliard–<wbr>Navier–<wbr>Stokes),
           benchmarking synthetic Lagrangian-tracer trajectories against direct
           numerical simulations.
         - >-

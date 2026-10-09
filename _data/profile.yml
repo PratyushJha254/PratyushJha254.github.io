@@ -17,19 +17,20 @@ tagline: >-
 # paragraphs.
 about: |
   I'm a pre-doctoral researcher at the Indian Institute of Science, Bangalore,
-  working with Prof. Rahul Pandit. My work sits where statistical physics
-  meets machine learning: I take physical systems whose statistics are known
+  working with Prof. Rahul Pandit. My work sits at the intersection of statistical physics
+  and machine learning. I take physical systems whose statistics are known
   exactly or characterized well, such as spin models and turbulent flows, and
-  use them as controlled testbeds for generative models. Recently I have
+  use them as controlled testbeds for generative models. I am also interested in using 
+  statistical physics to uncover the learning dynamics of AI Models. Recently, I have
   trained diffusion models on non-reciprocal turbulence, and on the 2D XY
   model, where diffusing directly on the torus reproduces the heat capacity
   across the BKT transition.
 
   Before IISc, I spent a year and a half as an AI engineer at Ola Krutrim,
   where I fine-tuned LLaMA-3 with LoRA and preference optimization, and built
-  production systems for retrieval-augmented generation, model serving and
-  video analytics. I studied Engineering Physics at IIT Roorkee, graduating
-  second in my department.
+  production systems for retrieval-augmented generation, model serving, and
+  video analytics. I studied Engineering Physics at IIT Roorkee, graduating with 
+  second rank in my department.
 
   If you work on related problems, or would simply like to talk about physics
   and machine learning, I would be glad to hear from you.

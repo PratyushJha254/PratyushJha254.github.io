@@ -139,7 +139,7 @@
       summary: >-
         Built a production RAG platform with Flask, MilvusDB retrieval and
         Celery/Redis task queues.
-    - title: Model-as-a-Service: Embedding and reranking models
+    - title: "Model-as-a-Service: Embedding and reranking models"
       summary: >-
         Served embedding and reranking models on KServe/FastAPI at sub-200 ms
         latency.

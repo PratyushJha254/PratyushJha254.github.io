@@ -58,7 +58,7 @@
           diffusion model, which spends capacity learning the manifold
           constraint.
         - >-
-          To our knowledge, the first data-driven generative model (no
+          To my knowledge, the first data-driven generative model (no
           Hamiltonian, no feature engineering) to reproduce the heat capacity of
           the 2D XY model across the BKT transition; a MALA correction after ODE
           sampling removes the discretization error that otherwise biases
@@ -90,8 +90,8 @@
     - >-
       Frustrated Josephson-junction arrays map onto long-range Ising models,
       which are costly to simulate with Monte Carlo; as a first step toward
-      them, studied transfer from nearest-neighbour (NN) to
-      next-nearest-neighbour (NNN) Ising models.
+      them, studied transfer from nearest-neighbor (NN) to
+      next-nearest-neighbor (NNN) Ising models.
     - >-
       Pre-trained deep networks on NN data and fine-tuned them on limited NNN
       data to predict phase transitions; compared fine-tuning configurations.
@@ -114,7 +114,7 @@
   points:
     - >-
       Monte Carlo (TOPAS) simulation of CR-39 track-etch detectors: reproduced
-      published recoil-proton threshold energies across nine aluminium degrader
+      published recoil-proton threshold energies across nine aluminum degrader
       thicknesses, and compared secondary-particle dose deposition from an
       isotropic monoenergetic neutron source with and without a water phantom.
 
@@ -127,7 +127,7 @@
   end: Dec 2025
   summary: >-
     A year and a half building and shipping AI systems in production, from
-    training and aligning large language models to retrieval, model serving
+    training and aligning large language models, model serving
     and video analytics.
   projects:
     - title: LLM fine-tuning and preference optimization
@@ -139,14 +139,14 @@
       summary: >-
         Built a production RAG platform with Flask, MilvusDB retrieval and
         Celery/Redis task queues.
-    - title: Embedding and reranking services
+    - title: Model-as-a-Service: Embedding and reranking models
       summary: >-
         Served embedding and reranking models on KServe/FastAPI at sub-200 ms
         latency.
     - title: Video analytics at scale
       summary: >-
         Built NVIDIA DeepStream CCTV analytics over RTSP streams from 1000
-        service centres.
+        service centers.
   stack:
     - PyTorch
     - LoRA

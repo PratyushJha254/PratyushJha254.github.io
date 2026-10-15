@@ -1,0 +1,20 @@
+# People whose names link to their Google Scholar profiles. Wherever a full
+# `name` appears (About, News, advisors, project details), it becomes a link;
+# in author lists, the short form in `cite` is linked.
+# Leave `scholar` empty to stop linking someone.
+
+- name: Rahul Pandit
+  cite: R. Pandit
+  scholar: https://scholar.google.com/citations?user=75RHOJQAAAAJ
+
+- name: Peayush Choubey
+  scholar: https://scholar.google.com/citations?user=hDC5j0AAAAAJ
+
+- name: John Kildea
+  scholar: https://kildealab.com
+
+- name: Manu Kumar Gupta
+  scholar: https://scholar.google.com/citations?user=qg_A4VoAAAAJ
+
+- name: Balasubramanian Raman
+  scholar: https://scholar.google.com/citations?user=QU2O6JMAAAAJ

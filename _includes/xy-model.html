@@ -6,7 +6,7 @@
 {%- assign xy_paper = site.data.publications | where: "id", "jha2026xy" | first -%}
 <figure class="xy" data-xy>
   <canvas class="xy__canvas" width="512" height="512" role="img"
-    aria-label="A 64 by 64 lattice of spins in the two-dimensional XY model, coloured by spin angle, with dots marking vortices and antivortices."></canvas>
+    aria-label="A 32 by 32 lattice of spins in the two-dimensional XY model, drawn as arrows coloured by angle, with dots marking vortices and antivortices."></canvas>
   <noscript><p class="xy__fallback">The simulation needs JavaScript.</p></noscript>
 
   <div class="xy__controls">
@@ -40,22 +40,35 @@
       <dt>|<i>m</i>|</dt>
       <dd data-xy-magnetization>0.00</dd>
     </div>
+    <div>
+      <dt><i>E</i>/<i>N</i></dt>
+      <dd data-xy-energy>–</dd>
+    </div>
   </dl>
+
+  <div class="xy__plot">
+    <canvas class="xy__plot-canvas" width="600" height="150" role="img" data-xy-plot
+      aria-label="Energy per spin against Monte Carlo sweeps, with a dashed line at the equilibrium value."></canvas>
+  </div>
 
   <figcaption>
     <p>
-      The 2D XY model on a 64 × 64 torus, simulated live in your browser by
-      Metropolis Monte Carlo. Colour shows spin angle;
+      The 2D XY model on a 32 × 32 torus, sampled live in your browser by
+      Metropolis Monte Carlo. Each arrow is a spin, coloured by its angle;
       <span class="xy__key xy__key--vortex"></span> marks a vortex and
       <span class="xy__key xy__key--antivortex"></span> an antivortex.
     </p>
     <p>
-      It starts from random spins and thermalizes in real time, so the first
-      few thousand sweeps show free vortices and antivortices finding each
-      other and annihilating, not equilibrium. Once settled, below the BKT
-      transition (<i>T</i> ≈ 0.89 <i>J</i>/<i>k</i><sub>B</sub>) vortices
-      appear only as bound pairs; above it they unbind and proliferate. Drag
-      across the lattice to stir it.
+      It starts from random spins and thermalizes in real time, so at first
+      free vortices and antivortices find each other and annihilate. Once
+      settled, below the BKT transition (<i>T</i> ≈ 0.89 <i>J</i>/<i>k</i><sub>B</sub>)
+      vortices appear only as bound pairs; above it they unbind and
+      proliferate. Drag across the lattice to stir it.
+    </p>
+    <p>
+      The plot follows the energy per spin as the lattice thermalizes; the
+      dashed line is the equilibrium value at the same temperature, from a
+      separate Monte Carlo run started with all spins aligned.
     </p>
     {%- if xy_paper %}
     <p class="xy__paper">

@@ -10,7 +10,8 @@
     {%- for item in items limit: 4 %}
     <li class="entry entry--tight">
       <p class="entry__when">{{ item.date }}</p>
-      <div class="entry__body">{{ item.text | markdownify }}</div>
+      {%- capture news_text %}{{ item.text | markdownify }}{% endcapture %}
+      <div class="entry__body">{% include people-links.html text=news_text %}</div>
     </li>
     {%- endfor %}
   </ol>
@@ -21,7 +22,8 @@
       {%- for item in items offset: 4 %}
       <li class="entry entry--tight">
         <p class="entry__when">{{ item.date }}</p>
-        <div class="entry__body">{{ item.text | markdownify }}</div>
+        {%- capture news_text %}{{ item.text | markdownify }}{% endcapture %}
+        <div class="entry__body">{% include people-links.html text=news_text %}</div>
       </li>
       {%- endfor %}
     </ol>

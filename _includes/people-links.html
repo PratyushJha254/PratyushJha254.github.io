@@ -1,0 +1,13 @@
+{%- comment -%}
+  Turns every full name listed in _data/people.yml into a link to that
+  person's Google Scholar profile.
+  Usage: {% include people-links.html text=some_text %}
+{%- endcomment -%}
+{%- assign linked = include.text -%}
+{%- for person in site.data.people -%}
+  {%- if person.scholar and person.scholar != "" -%}
+    {%- capture person_link -%}<a href="{{ person.scholar }}">{{ person.name }}</a>{%- endcapture -%}
+    {%- assign linked = linked | replace: person.name, person_link -%}
+  {%- endif -%}
+{%- endfor -%}
+{{- linked -}}

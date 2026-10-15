@@ -1,16 +1,90 @@
-# Smaller projects, shown at the bottom of the Experience page.
+# Projects, shown on the Projects page, grouped by `group`.
+# Groups appear in the order of their first project here, and each group gets
+# a button at the top of the page that jumps to it.
 # `url` is optional and turns the title into a link.
+# `related` is optional: a `label` and a `url`, shown as a "Related:" link
+# under the project.
 
-- title: Feature-based dynamic pricing
-  context: Course project, Reinforcement Learning (Prof. Manu Kumar Gupta)
-  when: Feb 2024 – Mar 2024
+- title: Quantum Hadamard edge detection
+  group: Quantum computing and condensed matter
+  context: Quantum image processing project (Prof. Peayush Choubey), IIT Roorkee
+  when: Sep 2022 – Nov 2022
   summary: >-
-    Implemented ellipsoid and EXP4 contextual-bandit algorithms (Cohen et al.,
-    2020) and compared regret under changing distributions.
+    Implemented **quantum Hadamard edge detection** (QHED; Yao et al., 2017):
+    images amplitude-encoded on qubits, with a Hadamard gate on an auxiliary
+    qubit computing differences between neighbouring pixels to extract
+    horizontal and vertical edges.
+  related:
+    label: Bachelor's thesis on Josephson-junction arrays
+    url: /experience/#iitr-thesis
 
 - title: Monte Carlo simulation of magnetic skyrmions
+  group: Quantum computing and condensed matter
   context: Physics & Astronomy Club, IIT Roorkee
   when: Aug 2023 – Oct 2023
   summary: >-
-    Metropolis sampling with simulated annealing to form topologically protected
-    skyrmion configurations on a 2D square lattice.
+    **Metropolis sampling with simulated annealing** to form **topologically protected
+    skyrmion configurations** on a 2D square lattice.
+  related:
+    label: "Spin models with diffusion: the 2D XY model paper"
+    url: /publications/#jha2026xy
+
+- title: Geant4 simulation of a CsI(Tl) scintillation detector
+  group: Nuclear physics simulation
+  context: Department of Physics, IIT Roorkee
+  when: May 2022 – Jul 2022
+  summary: >-
+    Simulated a **CsI(Tl) scintillator detector** setup in **Geant4**, the C++ Monte
+    Carlo toolkit for the passage of particles through matter. Wrote the
+    detector construction in C++ and counted the hits generated on the
+    detector surface, the input to the detector's pulse-height spectrum.
+  related:
+    label: Geant4-based neutron-detection simulations at McGill University (MITACS Globalink)
+    url: /experience/#mcgill
+
+- title: Feature-based dynamic pricing with contextual bandits
+  group: Machine learning, reinforcement learning and LLMs
+  context: Course project, Reinforcement Learning (Prof. Manu Kumar Gupta)
+  when: Feb 2024 – Mar 2024
+  summary: >-
+    Implemented the **ellipsoid and EXP4 contextual-bandit algorithms** of Cohen et
+    al. (2020) and compared their regret, and how they adapt, under changing
+    distributions.
+  related:
+    label: Deep Q-learning agent for pixel-based game control
+    url: /projects/#deep-q-learning-agent-for-pixel-based-game-control
+
+- title: "MultiPDF Insight Engine: retrieval-augmented generation with Gemini"
+  group: Machine learning, reinforcement learning and LLMs
+  context: Independent project
+  when: Aug 2023 – Oct 2023
+  summary: >-
+    A Streamlit app that answers questions over multiple uploaded PDFs, using
+    **agentic chunking** into propositions with Google Gemini and **Hypothetical
+    Document Embeddings (HyDE)** to improve retrieval.
+  related:
+    label: Production retrieval-augmented generation at Ola Krutrim
+    url: /experience/#krutrim
+
+- title: Image colorization with conditional GANs
+  group: Machine learning, reinforcement learning and LLMs
+  context: Course project, Machine Learning (Prof. Balasubramanian Raman)
+  when: Mar 2023 – Apr 2023
+  summary: >-
+    Trained a **conditional GAN** for image-to-image translation in the Lab colour
+    space on 8,000+ COCO images.
+  related:
+    label: Generative diffusion models for turbulence and the 2D XY model
+    url: /experience/#iisc
+
+- title: Deep Q-learning agent for pixel-based game control
+  group: Machine learning, reinforcement learning and LLMs
+  context: Vision and Language Group, IIT Roorkee
+  when: Jun 2022 – Jul 2022
+  summary: >-
+    Implemented a **deep Q-network (DQN)** in PyTorch that learns to act directly
+    from raw game frames through a convolutional network; the trained agent
+    clears the first level of Super Mario Bros.
+  related:
+    label: Contextual bandits for dynamic pricing
+    url: /projects/#feature-based-dynamic-pricing-with-contextual-bandits

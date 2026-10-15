@@ -1,0 +1,19 @@
+{%- comment -%}
+  Every position from experience.yml as a fold: research first, then
+  industry, each under a small heading.
+  Usage: {% include experience-folds.html id="experience-folds" %}
+  The "Expand all / Collapse all" buttons point at the same id:
+  <div class="fold-controls" data-fold-controls="experience-folds" hidden>…</div>
+{%- endcomment -%}
+{%- assign kinds = "research,industry" | split: "," -%}
+<div class="folds" id="{{ include.id }}">
+  {%- for kind in kinds %}
+  {%- assign positions = site.data.experience | where: "kind", kind %}
+  {%- if positions.size > 0 %}
+  <h3 class="fold-group" id="{{ kind }}">{% if kind == "research" %}Research{% else %}Industry{% endif %}</h3>
+    {%- for pos in positions %}
+  {% include position-fold.html position=pos %}
+    {%- endfor %}
+  {%- endif %}
+  {%- endfor %}
+</div>

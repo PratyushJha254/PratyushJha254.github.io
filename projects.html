@@ -1,0 +1,45 @@
+---
+title: Projects
+permalink: /projects/
+description: Projects by Pratyush Jha in quantum computing, statistical physics, nuclear physics simulation, machine learning, reinforcement learning and LLMs.
+---
+<p class="lede">Projects alongside my main research.</p>
+<p class="page-related">Related:
+  <a href="{{ '/experience/' | relative_url }}">Experience</a>
+  <span aria-hidden="true">·</span>
+  <a href="{{ '/publications/' | relative_url }}">Publications</a></p>
+
+{%- assign groups = site.data.projects | group_by: "group" %}
+{%- if groups.size > 1 %}
+<nav class="chip-nav" aria-label="Project categories">
+  <ul>
+    {%- for group in groups %}
+    <li><a class="chip" href="#{{ group.name | slugify }}">{{ group.name }}</a></li>
+    {%- endfor %}
+  </ul>
+</nav>
+{%- endif %}
+
+{%- for group in groups %}
+{%- assign gid = group.name | slugify %}
+<section class="block" aria-labelledby="{{ gid }}">
+  <h2 id="{{ gid }}">{{ group.name }}</h2>
+  {%- for project in group.items %}
+  <article class="entry" id="{{ project.title | slugify }}">
+    <p class="entry__when">{{ project.when }}</p>
+    <div class="entry__body">
+      <h3 class="entry__title">
+        {%- if project.url %}<a href="{{ project.url }}">{{ project.title }}</a>{% else %}{{ project.title }}{% endif -%}
+      </h3>
+      <p class="entry__meta">{% include people-links.html text=project.context %}</p>
+      <p>{{ project.summary | markdownify | remove: '<p>' | remove: '</p>' | strip }}</p>
+      {%- if project.related %}
+      <p class="entry__related">Related: <a href="{{ project.related.url | relative_url }}">{{ project.related.label }}</a></p>
+      {%- endif %}
+    </div>
+  </article>
+  {%- endfor %}
+</section>
+{%- endfor %}
+
+{% include guide.html %}

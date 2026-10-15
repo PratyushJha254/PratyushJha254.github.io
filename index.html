@@ -21,15 +21,46 @@ layout: default
     <p class="hero__lede">{{ profile.tagline }}</p>
     {% include link-list.html class="link-row" labels=true %}
     <p class="hero__actions">{% include cv-button.html %}</p>
+    {%- if profile.affiliations %}
+    <ul class="affiliations" aria-label="Institutions">
+      {%- for place in profile.affiliations %}
+      <li>
+        <a class="affiliation" href="{{ place.url | relative_url }}">
+          <span class="affiliation__logo">
+            <picture>
+              <source srcset="{{ '/assets/img/logos/' | append: place.logo | append: '.webp' | relative_url }}" type="image/webp">
+              <img src="{{ '/assets/img/logos/' | append: place.logo | append: '.png' | relative_url }}" alt="" height="160" loading="lazy">
+            </picture>
+          </span>
+          <span class="affiliation__text">
+            <span class="affiliation__name">{{ place.name }}</span>
+            <span class="affiliation__role">{{ place.role }}</span>
+          </span>
+        </a>
+      </li>
+      {%- endfor %}
+    </ul>
+    {%- endif %}
   </div>
   {% include xy-model.html %}
   {%- if profile.about %}
   <section class="hero__about" aria-labelledby="about">
     <h2 id="about">About</h2>
-    {{ profile.about | markdownify }}
+    {%- capture about_html %}{{ profile.about | markdownify }}{% endcapture %}
+    {% include people-links.html text=about_html %}
   </section>
   {%- endif %}
 </section>
+
+{%- if site.data.experience.size > 0 %}
+<section class="block" aria-labelledby="experience">
+  <div class="block__head">
+    <h2 id="experience">Experience</h2>
+    {% include fold-controls.html target="experience-folds" %}
+  </div>
+  {% include experience-folds.html id="experience-folds" %}
+</section>
+{%- endif %}
 
 {% include news.html %}
 
@@ -52,3 +83,10 @@ layout: default
   <p class="block__more"><a href="{{ '/blog/' | relative_url }}">All posts</a></p>
 </section>
 {%- endif %}
+
+{%- assign news_visible = site.data.news | where_exp: "item", "item.visible != false" %}
+{%- capture guide_stops -%}
+  experience|Experience
+  {%- if news_visible.size > 0 %};news|News and papers{% else %};papers|Papers{% endif -%}
+{%- endcapture %}
+{% include guide.html stops=guide_stops %}

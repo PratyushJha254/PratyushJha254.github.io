@@ -22,7 +22,10 @@
       {%- for author in pub.authors -%}
         {%- assign name = author | remove: "*" | strip -%}
         {%- capture shown %}{{ name }}{% if author contains "*" %}<sup>*</sup>{% endif %}{% endcapture -%}
-        {%- if name == site.data.profile.cite_name %}<strong>{{ shown }}</strong>{% else %}{{ shown }}{% endif -%}
+        {%- assign person = site.data.people | where: "cite", name | first -%}
+        {%- if name == site.data.profile.cite_name %}<strong>{{ shown }}</strong>
+        {%- elsif person and person.scholar and person.scholar != "" %}<a href="{{ person.scholar }}">{{ shown }}</a>
+        {%- else %}{{ shown }}{% endif -%}
         {%- unless forloop.last %}, {% endunless -%}
       {%- endfor -%}
     </p>

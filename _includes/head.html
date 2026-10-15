@@ -16,4 +16,15 @@
       if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
     } catch (e) {}
   })();
+  // Sections fade in as they come into view (assets/js/site.js). If that
+  // script has not started within 2.5 s, show everything anyway.
+  (function () {
+    var root = document.documentElement;
+    var still = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (still || !("IntersectionObserver" in window)) return;
+    root.classList.add("js-reveal");
+    window.setTimeout(function () {
+      if (!root.classList.contains("reveal-ready")) root.classList.remove("js-reveal");
+    }, 2500);
+  })();
 </script>

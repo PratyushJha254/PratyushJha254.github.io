@@ -9,14 +9,24 @@
     title: Deep Learning Simulations for Phase Diagrams of Interacting Josephson Qubits
     advisor: Prof. Peayush Choubey
   coursework:
-    - Thermal & Statistical Physics
-    - Stochastic Processes
-    - Statistical Inference
-    - Numerical Analysis & Computational Physics
-    - Mathematical Physics
-    - Quantum Physics
-    - Quantum Computing
-    - Elements of Condensed Matter Physics
-    - Quantum Theory of Solids
-    - Introduction to Machine Learning
-    - Reinforcement Learning
+    - area: Quantum and condensed-matter physics
+      courses:
+        - Quantum Physics
+        - Quantum Computing
+        - Quantum Theory of Solids†
+        - Elements of Condensed Matter Physics
+        - Physics of Nanosystems
+    - area: Nuclear physics
+      courses:
+        - Nuclear Physics & Applications
+        - Nuclear Instrumentation†
+        - Nuclear Astrophysics†
+    - area: Statistical physics, mathematics and machine learning
+      courses:
+        - Thermal & Statistical Physics
+        - Statistical Inference†
+        - Stochastic Processes†
+        - Numerical Analysis & Computational Physics
+        - Mathematical Physics
+        - Introduction to Machine Learning
+        - Reinforcement Learning†

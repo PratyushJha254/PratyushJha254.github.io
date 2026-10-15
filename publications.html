@@ -3,7 +3,12 @@ title: Publications
 permalink: /publications/
 description: Papers and preprints by Pratyush Jha.
 ---
-<section class="block block--first">
+<p class="page-related">Related:
+  <a href="{{ '/experience/' | relative_url }}">Experience</a>
+  <span aria-hidden="true">·</span>
+  <a href="{{ '/projects/' | relative_url }}">Projects</a></p>
+
+<section class="block">
   {%- assign last_year = "" %}
   {%- for pub in site.data.publications %}
     {%- if pub.year == last_year %}{% assign when = "" %}{% else %}{% assign when = pub.year %}{% endif %}
@@ -11,3 +16,5 @@ description: Papers and preprints by Pratyush Jha.
     {%- assign last_year = pub.year %}
   {%- endfor %}
 </section>
+
+{% include guide.html %}

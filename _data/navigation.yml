@@ -1,8 +1,12 @@
 # The links in the header, in order.
 # only_if: posts  -> the link is hidden while there are no published posts.
 
+- label: Home
+  url: /
 - label: Experience
   url: /experience/
+- label: Projects
+  url: /projects/
 - label: Publications
   url: /publications/
 - label: CV

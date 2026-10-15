@@ -17,10 +17,13 @@ description: Education, experience, skills and awards of Pratyush Jha.
       <h3 class="entry__title">{{ school.institution }}</h3>
       <p class="entry__meta">{{ school.degree }}{% if school.result %}<br>{{ school.result }}{% endif %}</p>
       {%- if school.thesis %}
-      <p>Thesis: <cite>{{ school.thesis.title }}</cite>{% if school.thesis.advisor %}, advised by {{ school.thesis.advisor }}{% endif %}.</p>
+      <p>Thesis: <cite>{{ school.thesis.title }}</cite>{% if school.thesis.advisor %}, advised by {% include people-links.html text=school.thesis.advisor %}{% endif %}.</p>
       {%- endif %}
+      {%- for group in school.coursework %}
+      <p><strong>{{ group.area }}:</strong> {{ group.courses | join: ", " }}.</p>
+      {%- endfor %}
       {%- if school.coursework %}
-      <p>Relevant coursework: {{ school.coursework | join: ", " }}.</p>
+      <p class="entry__note">† Postgraduate-level course.</p>
       {%- endif %}
     </div>
   </article>
@@ -115,3 +118,5 @@ description: Education, experience, skills and awards of Pratyush Jha.
   </div>
 </section>
 {%- endif %}
+
+{% include guide.html %}

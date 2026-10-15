@@ -1,10 +1,11 @@
 # Site settings. Everything about you lives in _data/*.yml, not here.
 
 title: Pratyush Jha
-tagline: Statistical physics of generative models
+tagline: Physics × machine learning · generative models for physical systems
 description: >-
-  Pratyush Jha is a pre-doctoral researcher at the Indian Institute of Science,
-  Bangalore, working on the statistical physics of generative models.
+  Pratyush Jha is a pre-doctoral research assistant at the Indian Institute of
+  Science, Bangalore, working on physics and machine learning: generative models
+  for physical systems, and the statistical physics of how they learn.
 author: Pratyush Jha
 lang: en
 

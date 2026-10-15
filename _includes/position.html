@@ -9,7 +9,7 @@
   <p class="entry__when">{{ pos.start }}{% if pos.end %} – {{ pos.end }}{% endif %}</p>
   <div class="entry__body">
     <h3 class="entry__title">{{ pos.org }}{% if pos.location %}, {{ pos.location }}{% endif %}</h3>
-    <p class="entry__meta">{{ pos.role }}{% if pos.advisor %}<br>Advisor: {{ pos.advisor }}{% endif %}</p>
+    <p class="entry__meta">{{ pos.role }}{% if pos.advisor %}<br>Advisor: {% include people-links.html text=pos.advisor %}{% endif %}</p>
     {%- if include.detail %}
       {%- if pos.summary %}
     <p class="entry__summary">{{ pos.summary | markdownify | remove: '<p>' | remove: '</p>' | strip }}</p>

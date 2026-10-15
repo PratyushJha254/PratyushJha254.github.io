@@ -90,6 +90,9 @@
   --button-hover: #2e3d66;
   --header: rgb(251 247 233 / 0.86);
   --string: #8a3c3a;
+  --progress-a: #2b4c9b;
+  --progress-b: #2f8f83;
+  --progress-c: #d0972f;
 
   --font-text: "Newsreader", "STIX Two Text", Georgia, "Times New Roman", serif;
   --font-ui: "Instrument Sans", "Helvetica Neue", Arial, sans-serif;
@@ -118,6 +121,9 @@
   --button-hover: #ffffff;
   --header: rgb(28 14 33 / 0.86);
   --string: #d9a48f;
+  --progress-a: #a9c0ea;
+  --progress-b: #7fcfc4;
+  --progress-c: #f0c27a;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -137,6 +143,9 @@
     --button-hover: #ffffff;
     --header: rgb(28 14 33 / 0.86);
     --string: #d9a48f;
+    --progress-a: #a9c0ea;
+    --progress-b: #7fcfc4;
+    --progress-c: #f0c27a;
   }
 }
 
@@ -298,6 +307,8 @@ button {
   main .post__meta,
   main .link-row li,
   main .pills,
+  main .chip-nav li,
+  main .entry__related,
   main .stack li,
   main .tags li,
   main .xy__fallback,
@@ -333,6 +344,25 @@ button {
   -webkit-backdrop-filter: blur(10px) saturate(1.2);
   backdrop-filter: blur(10px) saturate(1.2);
   transition: border-color 0.2s ease;
+}
+
+/* Reading progress: a thin line along the bottom of the header that fills
+   from left to right as you read down the page. */
+.read-progress {
+  position: absolute;
+  right: 0;
+  bottom: -1px;
+  left: 0;
+  height: 2px;
+  pointer-events: none;
+}
+
+.read-progress span {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, var(--progress-a), var(--progress-b), var(--progress-c));
+  transform: scaleX(0);
+  transform-origin: left;
 }
 
 .site-header.is-scrolled {
@@ -390,6 +420,45 @@ button {
 .site-nav a[aria-current="page"],
 .site-nav a.is-section {
   border-bottom-color: var(--ink);
+}
+
+/* On narrow screens the header has two rows: the name with the theme switch
+   beside it, then the links. */
+@media (max-width: 39.99rem) {
+  html {
+    scroll-padding-top: 7rem;
+  }
+
+  .site-header__inner {
+    position: relative;
+  }
+
+  .site-nav .theme-toggle {
+    position: absolute;
+    top: 0.6rem;
+    right: var(--gutter);
+  }
+}
+
+/* The smallest phones: keep the links on one line. */
+@media (max-width: 39.99rem) {
+  .site-nav {
+    font-size: 0.9rem;
+  }
+
+  .site-nav ul {
+    column-gap: 0.9rem;
+  }
+}
+
+@media (max-width: 22rem) {
+  .site-nav {
+    font-size: 0.82rem;
+  }
+
+  .site-nav ul {
+    column-gap: 0.65rem;
+  }
 }
 
 .theme-toggle,
@@ -465,6 +534,23 @@ main {
 
 .site-footer p + p {
   margin-top: 0.15rem;
+}
+
+.site-footer .site-footer__top {
+  margin-top: 0.6rem;
+}
+
+.site-footer__top a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.site-footer__top .icon {
+  width: 0.95em;
+  height: 0.95em;
 }
 
 /* Icons only, in the footer */
@@ -620,6 +706,43 @@ summary.pill::-webkit-details-marker {
   display: none;
 }
 
+/* Category buttons at the top of the Projects page; each jumps to its group. */
+.chip-nav {
+  margin-top: 1.75rem;
+}
+
+.chip-nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 0.95rem;
+  background: var(--button);
+  border-radius: 999px;
+  color: var(--button-ink);
+  font-family: var(--font-ui);
+  font-size: 0.92rem;
+  font-weight: 500;
+  line-height: 1.3;
+  text-decoration: none;
+  transition: background-color 0.15s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.chip:hover {
+  background: var(--button-hover);
+  color: var(--button-ink);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px -10px rgb(28 37 65 / 0.6);
+}
+
 .pill-panel[open] {
   flex-basis: 100%;
 }
@@ -754,6 +877,13 @@ summary.pill::-webkit-details-marker {
 
 .entry__summary {
   margin-top: 0.75rem;
+}
+
+.entry__related {
+  margin-top: 0.6rem;
+  font-family: var(--font-ui);
+  font-size: 0.9rem;
+  color: var(--muted);
 }
 
 .entry__more {
@@ -958,6 +1088,13 @@ ul.entry__body.plain {
   border-radius: 6px;
   background: var(--surface);
   box-shadow: 0 0 0 1px rgb(0 0 0 / 0.04), 0 10px 24px -14px rgb(28 37 65 / 0.45);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+/* The portrait lifts slightly on hover. */
+.portrait:hover img {
+  transform: translateY(-3px) scale(1.035);
+  box-shadow: 0 0 0 1px rgb(0 0 0 / 0.04), 0 18px 32px -14px rgb(28 37 65 / 0.55);
 }
 
 .hero__name {
@@ -1052,11 +1189,325 @@ ul.entry__body.plain {
 }
 
 .more[open] > summary::before {
-  content: "âˆ’";
+  content: "\2212";
 }
 
 .more > summary:hover {
   color: var(--link-hover);
+}
+
+/* Research experience on the home page. Each position is a fold: dates,
+   heading, role and a grey one-line description are always visible; the
+   round button on the right opens the details below. */
+.block__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem 1rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.block__head h2 {
+  font-size: 1.3rem;
+}
+
+.fold-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.fold-controls[hidden] {
+  display: none;
+}
+
+.fold {
+  border-bottom: 1px solid var(--rule);
+}
+
+/* "Research" and "Industry" above their folds */
+.fold-group {
+  margin-top: 1.9rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--rule);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.block__head + .folds > .fold-group:first-child {
+  margin-top: 1.4rem;
+}
+
+/* Experience page: Expand all / Collapse all on the right */
+.fold-bar {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.fold-bar + .folds > .fold-group:first-child {
+  margin-top: 0.6rem;
+}
+
+/* Floating guide on the home page, bottom left: the next part of the page,
+   or "Back to top" at the end. */
+.guide {
+  position: fixed;
+  left: max(1rem, env(safe-area-inset-left));
+  bottom: max(1rem, env(safe-area-inset-bottom));
+  z-index: 25;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem 0.5rem 0.6rem;
+  background: var(--button);
+  border-radius: 999px;
+  box-shadow: 0 8px 22px -10px rgb(28 37 65 / 0.55);
+  color: var(--button-ink);
+  font-family: var(--font-ui);
+  font-size: 0.9rem;
+  font-weight: 500;
+  line-height: 1.2;
+  text-decoration: none;
+}
+
+.guide[hidden] {
+  display: none;
+}
+
+.guide {
+  transition: opacity 0.25s ease, transform 0.25s ease, background-color 0.15s ease;
+}
+
+.guide.is-away {
+  opacity: 0;
+  transform: translateY(0.5rem);
+  pointer-events: none;
+}
+
+.guide:hover {
+  background: var(--button-hover);
+  color: var(--button-ink);
+}
+
+.guide__icon {
+  display: inline-grid;
+  place-items: center;
+  width: 1.6rem;
+  height: 1.6rem;
+  background: color-mix(in srgb, var(--button-ink) 18%, transparent);
+  border-radius: 50%;
+}
+
+.guide__icon .icon {
+  width: 1rem;
+  height: 1rem;
+}
+
+.guide__icon--up,
+.guide.is-up .guide__icon--down {
+  display: none;
+}
+
+.guide.is-up .guide__icon--up {
+  display: inline-grid;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .guide:not(.is-up) .guide__icon--down .icon {
+    animation: guide-nudge 2.4s ease-in-out infinite;
+  }
+}
+
+@keyframes guide-nudge {
+  0%, 60%, 100% {
+    transform: translateY(0);
+  }
+  30% {
+    transform: translateY(2px);
+  }
+}
+
+/* Scroll bar on the left edge: appears while scrolling, fades out after a
+   second, and can be dragged. */
+.scrollbar {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 30;
+  width: 14px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.scrollbar[hidden] {
+  display: none;
+}
+
+.scrollbar.is-active {
+  opacity: 1;
+}
+
+.scrollbar__thumb {
+  position: absolute;
+  top: 0;
+  left: 4px;
+  width: 6px;
+  background: color-mix(in srgb, var(--muted) 55%, transparent);
+  border-radius: 3px;
+  cursor: grab;
+  touch-action: none;
+}
+
+/* A wider area to grab than the thumb itself */
+.scrollbar__thumb::before {
+  content: "";
+  position: absolute;
+  inset: -4px -6px;
+}
+
+.scrollbar.is-active .scrollbar__thumb {
+  pointer-events: auto;
+}
+
+.scrollbar__thumb:hover,
+.scrollbar.is-dragging .scrollbar__thumb {
+  background: var(--muted);
+}
+
+.scrollbar.is-dragging .scrollbar__thumb {
+  cursor: grabbing;
+}
+
+.fold__summary {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas: "when toggle" "head toggle";
+  column-gap: 1rem;
+  row-gap: 0.2rem;
+  padding-block: 1.1rem;
+  cursor: pointer;
+  list-style: none;
+}
+
+.fold__summary::-webkit-details-marker {
+  display: none;
+}
+
+.fold__when {
+  grid-area: when;
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.fold__head {
+  grid-area: head;
+  display: block;
+  min-width: 0;
+  max-width: var(--measure);
+}
+
+.fold__title {
+  display: block;
+  font-family: var(--font-ui);
+  font-size: 1.12rem;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+
+.fold__role {
+  display: block;
+  margin-top: 0.2rem;
+  font-family: var(--font-ui);
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+.fold__blurb {
+  display: block;
+  margin-top: 0.45rem;
+  color: var(--muted);
+}
+
+.fold__toggle {
+  grid-area: toggle;
+  align-self: center;
+  display: inline-grid;
+  place-items: center;
+  width: 2.2rem;
+  height: 2.2rem;
+  border: 1px solid var(--rule);
+  border-radius: 50%;
+  color: var(--muted);
+}
+
+.fold__toggle .icon {
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
+.fold__summary:hover .fold__toggle {
+  color: var(--ink);
+  border-color: var(--muted);
+  background: var(--surface);
+}
+
+.fold__summary:hover .fold__title {
+  color: var(--link-hover);
+}
+
+.fold[open] .fold__toggle {
+  transform: rotate(180deg);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .fold__toggle {
+    transition: transform 0.2s ease, color 0.15s ease, border-color 0.15s ease,
+      background-color 0.15s ease;
+  }
+}
+
+.fold__body {
+  max-width: var(--measure);
+  padding-bottom: 1.6rem;
+  overflow: hidden;
+}
+
+.fold.is-closing .fold__toggle {
+  transform: none;
+}
+
+.fold__body > .project:first-child {
+  margin-top: 0;
+}
+
+@media (min-width: 44rem) {
+  .fold__summary {
+    grid-template-columns: var(--margin-col) minmax(0, 1fr) auto;
+    grid-template-areas: "when head toggle";
+    column-gap: var(--col-gap);
+  }
+
+  .fold__when {
+    padding-top: 0.15rem;
+  }
+
+  .fold__body {
+    margin-left: calc(var(--margin-col) + var(--col-gap));
+  }
 }
 
 /* The simulation */
@@ -1085,9 +1536,23 @@ ul.entry__body.plain {
 /* The controls do nothing until the script is running, so keep them out of
    sight (and out of the tab order) until then. */
 .xy:not(.is-live) .xy__controls,
-.xy:not(.is-live) .xy__readout {
+.xy:not(.is-live) .xy__readout,
+.xy:not(.is-live) .xy__plot {
   visibility: hidden;
 }
+
+
+
+.xy__plot {
+  margin-top: 0.9rem;
+}
+
+.xy__plot-canvas {
+  display: block;
+  width: 100%;
+  height: 7.5rem;
+}
+
 
 .xy__controls {
   display: grid;
@@ -1574,8 +2039,189 @@ pre code {
   }
 }
 
+/* "Related:" line under a page title */
+.page-related {
+  margin-top: 0.9rem;
+  font-family: var(--font-ui);
+  font-size: 0.92rem;
+  color: var(--muted);
+}
+
+.page-related a {
+  font-weight: 500;
+}
+
+.page-related span {
+  margin-inline: 0.3rem;
+}
+
+/* Institution logos on the home page */
+.affiliations {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.2rem;
+  margin-top: 1.6rem;
+  padding: 0;
+  list-style: none;
+}
+
+.affiliation {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.affiliation__logo {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 2.7rem;
+  height: 2.7rem;
+  padding: 0.3rem;
+  background: #ffffff;
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.affiliation__logo picture {
+  display: contents;
+}
+
+.affiliation__logo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: filter 0.25s ease, opacity 0.25s ease;
+}
+
+/* In dark mode the logos rest in grey and take their colour on hover. */
+:root[data-theme="dark"] .affiliation__logo img {
+  filter: grayscale(1);
+  opacity: 0.75;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .affiliation__logo img {
+    filter: grayscale(1);
+    opacity: 0.75;
+  }
+}
+
+.affiliation:hover .affiliation__logo {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px -10px rgb(28 37 65 / 0.5);
+}
+
+:root .affiliation:hover .affiliation__logo img,
+:root .affiliation:focus-visible .affiliation__logo img {
+  filter: none;
+  opacity: 1;
+}
+
+.affiliation__text {
+  display: grid;
+  font-family: var(--font-ui);
+  line-height: 1.25;
+}
+
+.affiliation__name {
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.affiliation__role {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.affiliation:hover .affiliation__name {
+  color: var(--link-hover);
+}
+
+/* Phones: the three logos side by side, names under them. */
+@media (max-width: 39.99rem) {
+  .affiliations {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.75rem;
+  }
+
+  .affiliation {
+    flex-direction: column;
+    gap: 0.4rem;
+    text-align: center;
+  }
+
+  .affiliation__role {
+    display: none;
+  }
+}
+
+/* Sections fade in and rise a little, once, as they come into view. */
+.js-reveal main .block {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.js-reveal main .block.is-revealed {
+  opacity: 1;
+  transform: none;
+}
+
+/* The target of a link is briefly highlighted on arrival. */
+.is-flash {
+  animation: flash 1.8s ease-out;
+  border-radius: 4px;
+}
+
+@keyframes flash {
+  0%, 25% {
+    background-color: color-mix(in srgb, var(--progress-c) 22%, transparent);
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+
+
+
+/* The bottom edge of the window: the last lines fade and blur slightly,
+   hinting that the page continues. Gone at the end of the page. */
+.edge-fade {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 15;
+  height: 5.5rem;
+  pointer-events: none;
+  background: linear-gradient(to bottom, transparent, color-mix(in srgb, var(--paper) 85%, transparent));
+  -webkit-backdrop-filter: blur(1.5px);
+  backdrop-filter: blur(1.5px);
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 70%);
+  mask-image: linear-gradient(to bottom, transparent, #000 70%);
+  transition: opacity 0.35s ease;
+}
+
+.edge-fade.is-done {
+  opacity: 0;
+}
+
 @media print {
+  .edge-fade,
+  .affiliations,
+  .read-progress,
   .site-header,
+  .guide,
+  .scrollbar,
+  .fold-controls,
+  .fold__toggle,
+  .site-footer__top,
   .xy__controls,
   .theme-toggle,
   .pills,

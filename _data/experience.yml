@@ -8,6 +8,10 @@
 # points    bullet points for the position itself
 # paper     an id from publications.yml; adds a link to that paper
 # stack     optional list of tools, shown under the position
+# related   optional `label` and `url`: a "Related:" link at the end of the
+#           position's details
+# blurb     one-line description, shown in grey under the position's heading
+#           on the home page and the Experience page; the details open below it
 #
 # Text accepts inline Markdown and HTML: *italics*, [links](https://...),
 # C<sub>v</sub>.
@@ -16,8 +20,11 @@
   kind: research
   org: Indian Institute of Science
   location: Bangalore
-  role: Project Associate (pre-doctoral research)
+  role: "Research Assistant (RA: pre-doctoral)"
   advisor: Prof. Rahul Pandit
+  blurb: >-
+    Testing **generative diffusion models** on **non-reciprocal turbulence**, and
+    following up my 2D XY study.
   start: May 2026
   end: Present
   projects:
@@ -25,26 +32,34 @@
       paper: jha2026turbulence
       points:
         - >-
-          First application of generative diffusion models to non-reciprocal
+          **First application of generative diffusion models** to non-reciprocal
           binary-fluid turbulence (2D Non-Reciprocal Cahn–<wbr>Hilliard–<wbr>Navier–<wbr>Stokes),
           benchmarking synthetic Lagrangian-tracer trajectories against direct
           numerical simulations.
         - >-
-          Characterized Lagrangian multiscaling (velocity increments, their
+          Characterized **Lagrangian multiscaling** (velocity increments, their
           structure functions and flatnesses, multiscaling exponent ratios) for
           the first time in non-reciprocal hydrodynamics, alongside velocity and
           acceleration PDFs, curvature statistics, irreversibility and model
           transferability.
         - >-
-          Found that the accelerated DDIM sampler falters below 100 steps on
+          Found that the accelerated **DDIM sampler falters below 100 steps** on
           some statistics, although it stays accurate down to 25 steps in 3D
-          Navier–Stokes turbulence (Li et al., 2026); an 800-step DDPM
-          reconstructs the flow statistics accurately.
+          Navier–Stokes turbulence; an **800-step DDPM
+          reconstructs the flow statistics accurately**.
+    - title: Follow-up to the 2D XY study (ongoing)
+      points:
+        - >-
+          Extending the study to finite-size scaling, and to diagnosing what the learned score network captures.
 
 - id: independent
   kind: research
   org: Independent research
   role: Sole-author projects
+  blurb: >-
+    Two **sole-author papers**: diffusion on the torus for the **2D XY model across
+    the BKT transition**, and LLM-based verification of financial claims (3rd
+    place, FMD Challenge, ICWSM 2026).
   start: Jan 2026
   end: Apr 2026
   projects:
@@ -52,20 +67,20 @@
       paper: jha2026xy
       points:
         - >-
-          Performed score-based diffusion directly on the torus (the 64 × 64 XY
+          Performed **score-based diffusion directly on the torus** (the 64 × 64 XY
           lattice, a 4096-dimensional torus); the learned score matches the
           theoretical Boltzmann score more precisely than a Euclidean-embedding
           diffusion model, which spends capacity learning the manifold
           constraint.
         - >-
-          To my knowledge, the first data-driven generative model (no
-          Hamiltonian, no feature engineering) to reproduce the heat capacity of
-          the 2D XY model across the BKT transition; a MALA correction after ODE
-          sampling removes the discretization error that otherwise biases
+          To my knowledge, the **first data-driven generative model** (no explicit 
+          information of Hamiltonian, no feature engineering) to **reproduce the heat capacity of
+          the 2D XY model across the BKT transition** to better accuracy than previously developed methods in literature; a MALA correction after ODE
+          sampling removes the sampler-induced bias in the generated samples.
           <i>C</i><sub>v</sub>.
         - >-
-          Generalized zero-shot from <i>L</i> = 8 to <i>L</i> = 64 without
-          retraining, capturing the BKT transition at unseen lattice sizes.
+          **Showed zero-shot generalization** to other lattice size values from <i>L</i> = 8 to <i>L</i> = 64 without
+          retraining, thereby capturing the BKT transition at unseen lattice sizes.
     - title: Courtroom-inspired verification of financial misinformation
       paper: jha2026courtroom
       points:
@@ -76,7 +91,7 @@
           frozen ModernBERT encoder with parallel BiGRUs and context-attention
           pooling weighs the evidence.
         - >-
-          3rd place on the FMD Challenge 2026 leaderboard: accuracy 0.955,
+          **3rd place** on the FMD Challenge 2026 leaderboard: accuracy 0.955,
           F1 0.9549 on the blind test set.
 
 - id: iitr-thesis
@@ -84,6 +99,9 @@
   org: Indian Institute of Technology Roorkee
   role: Bachelor’s thesis researcher
   advisor: Prof. Peayush Choubey
+  blurb: >-
+    **Transfer learning** from nearest- to next-nearest-neighbor **Ising models**, a
+    first step toward **frustrated Josephson-junction arrays**.
   start: Aug 2023
   end: Apr 2024
   points:
@@ -93,7 +111,7 @@
       them, studied transfer from nearest-neighbor (NN) to
       next-nearest-neighbor (NNN) Ising models.
     - >-
-      Pre-trained deep networks on NN data and fine-tuned them on limited NNN
+      **Pre-trained deep networks on NN data and fine-tuned them** on limited NNN
       data to predict phase transitions; compared fine-tuning configurations.
       Unlike earlier zero-shot NN→NNN transfer (Canabarro et al., PRB 2019;
       Corte et al., Comput. Mater. Sci. 2021), the network is adapted by
@@ -102,6 +120,9 @@
       Earlier lab project (PHN300, 2023): classified Ising phases with
       feed-forward and convolutional networks trained on Monte Carlo
       configurations across lattice sizes.
+  related:
+    label: Quantum Hadamard edge detection, also with Prof. Peayush Choubey
+    url: /projects/#quantum-hadamard-edge-detection
 
 - id: mcgill
   kind: research
@@ -109,32 +130,43 @@
   location: Montreal
   role: MITACS Globalink Research Intern
   advisor: Prof. John Kildea
+  blurb: >-
+    **Monte Carlo particle-transport simulation** (TOPAS, built on **Geant4**) of
+    CR-39 detectors for **neutron detection**.
   start: May 2023
   end: Aug 2023
   points:
     - >-
-      Monte Carlo (TOPAS) simulation of CR-39 track-etch detectors: reproduced
-      published recoil-proton threshold energies across nine aluminum degrader
-      thicknesses, and compared secondary-particle dose deposition from an
+      Monte Carlo particle-transport simulation (TOPAS, built on Geant4) of
+      CR-39 track-etch detectors for neutron detection: reproduced
+      published **recoil-proton threshold energies** across nine aluminum degrader
+      thicknesses in a radiator-degrader-detector setup, and compared secondary-particle dose deposition from an
       isotropic monoenergetic neutron source with and without a water phantom.
+  related:
+    label: Geant4 simulation of a CsI(Tl) scintillation detector
+    url: /projects/#geant4-simulation-of-a-csi-tl-scintillation-detector
 
 - id: krutrim
   kind: industry
   org: OLA Krutrim
   location: Bangalore
   role: Software Development Engineer I (AI Engineering & Research)
+  blurb: >-
+    **Fine-tuned and aligned LLMs**, and built **production retrieval-augmented
+    generation**, model-serving and video-analytics systems.
   start: Jul 2024
   end: Dec 2025
   summary: >-
-    A year and a half building and shipping AI systems in production, from
-    training and aligning large language models, model serving
-    and video analytics.
+    A year and a half building and shipping AI systems in production:
+    training and aligning large language models, retrieval-augmented
+    generation, model serving and video analytics.
   projects:
     - title: LLM fine-tuning and preference optimization
       summary: >-
-        Fine-tuned LLaMA-3-8B-Instruct with LoRA on 1000+ code Q&A pairs for
-        repository understanding. SimPO preference optimization reduced
-        hallucination, giving a 15% accuracy gain on paraphrased questions.
+        Fine-tuned **LLaMA-3-8B-Instruct with LoRA** on 1000+ code Q&A pairs for
+        repository understanding. **SimPO preference optimization** reduced
+        hallucination, with accuracy gains of 25% on training questions and
+        15% on paraphrased questions.
     - title: Retrieval-augmented generation platform
       summary: >-
         Built a production RAG platform with Flask, MilvusDB retrieval and
@@ -158,3 +190,6 @@
     - Celery
     - Redis
     - NVIDIA DeepStream
+  related:
+    label: "MultiPDF Insight Engine: retrieval-augmented generation with Gemini"
+    url: /projects/#multipdf-insight-engine-retrieval-augmented-generation-with-gemini

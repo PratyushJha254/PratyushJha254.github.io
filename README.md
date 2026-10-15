@@ -6,8 +6,9 @@ site rebuilds.
 
 | Page         | Address          | Built from                                                     |
 |--------------|------------------|----------------------------------------------------------------|
-| Home         | `/`              | `index.html`, `_data/profile.yml`, `news.yml`, `publications.yml` |
-| Experience   | `/experience/`   | `_data/experience.yml`, `_data/projects.yml`                   |
+| Home         | `/`              | `index.html`, `_data/profile.yml`, `experience.yml`, `news.yml`, `publications.yml` |
+| Experience   | `/experience/`   | `_data/experience.yml`                                         |
+| Projects     | `/projects/`     | `_data/projects.yml`, grouped by each project's `group`        |
 | Publications | `/publications/` | `_data/publications.yml`                                       |
 | CV           | `/cv/`           | every file in `_data/`                                         |
 | Blog         | `/blog/`         | the Markdown files in `_posts/`                                |
@@ -50,18 +51,67 @@ its fields.
 | `profile.yml`      | Name, role, tagline, About text, photo, email, links with icons, CV PDF |
 | `news.yml`         | News items for the home page                              |
 | `publications.yml` | Papers, with arXiv numbers, DOIs and BibTeX               |
-| `experience.yml`   | Research and industry positions, projects and tools       |
-| `projects.yml`     | Smaller projects                                          |
+| `experience.yml`   | Research and industry positions, projects and tools; each research position's one-line `blurb` for the home page |
+| `projects.yml`     | Projects for the Projects page, each with a `group`       |
 | `education.yml`    | Degrees, thesis, coursework                               |
 | `skills.yml`       | Skill groups                                              |
 | `awards.yml`       | Awards                                                    |
 | `service.yml`      | Teaching and service                                      |
 | `references.yml`   | Referees (hidden for now)                                 |
 | `navigation.yml`   | The links in the header                                   |
+| `people.yml`       | Professors' names and Google Scholar links                |
 
 To change your photo, replace `assets/img/portrait.jpg` and
 `assets/img/portrait.webp` with a 4:5 portrait (about 440 × 550 pixels or
-larger). To replace the CV, put the new PDF in `assets/` and update `cv_pdf`.
+larger). To replace the CV, overwrite `assets/Pratyush_Jha_CV.pdf` (the
+address `cv_pdf` points to), or put a PDF with a new name in `assets/` and
+update `cv_pdf`. `assets/Pratyush_cv_7_Oct_2026.pdf` is a copy kept so that
+older links still work; overwrite it too, or delete it once nothing links to it.
+
+The website CV is built from the master CV LaTeX source (kept outside this
+repository), without its internal last page, phone
+number or referees:
+`pdflatex -jobname=Pratyush_Jha_CV_website "\def\WebsiteBuild{}\input{Pratyush_Jha_CV_master}"`
+(run twice).
+
+Projects are grouped on the Projects page by their `group` field. Groups
+appear in the order of their first project in `projects.yml`, and each group
+gets a button at the top of the page that jumps to it; to add a group, give a
+project a new `group` name. A project's optional `related` field (a `label`
+and a `url`) adds a "Related:" link under it.
+
+The home page and the Experience page list every position from
+`experience.yml`, research first and then industry, folded: the dates,
+heading, role and `blurb` show, and the round button on the right opens the
+details. "Expand all" and "Collapse all" open or close every position. A link
+such as `/experience/#mcgill` (the position's `id`) opens that position
+directly.
+
+A button at the bottom left points to the next part of the page and, at the
+end, back to the top. On the home page its stops are Experience, then News
+and papers (set in `index.html`); on other pages they are the section
+headings, and it stays hidden on short pages. Every page has a thin scroll
+bar on the left edge that shows while you scroll and fades out a second
+later; it can be dragged. A thin coloured line under the header fills as you
+read down the page, sections fade in once as they come into view, and the
+last lines at the bottom of the window are softly faded until the end of the
+page, which hints that there is more below.
+Visitors whose system asks for reduced motion get none of the movement.
+
+Projects and Experience positions can have a `related` link (`label` and
+`url`). Links to a project use its title in lower case with hyphens, for
+example `/projects/#quantum-hadamard-edge-detection`.
+
+The row of institution logos under the CV button comes from `affiliations`
+in `profile.yml`; the logo files are in `assets/img/logos/`.
+
+The home-page simulation is live Metropolis Monte Carlo, with a plot of the
+energy per spin against the equilibrium value at the same temperature. The
+code is in `assets/js/xy-model.js`.
+
+Names listed in `_data/people.yml` link to their Google Scholar profiles
+wherever the full name appears (About, News, advisors, project details), and
+the short form in `cite` links in author lists.
 
 YAML is strict about indentation: use spaces, never tabs, and keep list items
 lined up with their neighbours. Put a value in quotes if it contains a colon.
@@ -157,7 +207,7 @@ _layouts/          page skeletons: default, page, post
 _includes/         reusable pieces: header, footer, a paper, a position, news,
                    icons (icon.html), the CV button
 index.html         home page
-experience.html, publications.html, cv.html
+experience.html, projects.html, publications.html, cv.html
 blog/              blog index and tag index
 assets/css/main.css      all styling; colours and fonts are set at the top
 assets/js/xy-model.js    the XY-model simulation on the home page
@@ -169,7 +219,6 @@ assets/img/              portrait and favicon
 To add a page, copy `experience.html`, change its `title` and `permalink`, and
 add it to `_data/navigation.yml`.
 
-The home-page simulation is a 64 × 64 XY model sampled by Metropolis Monte
-Carlo, starting from random spins and thermalizing in real time. Its caption
+The home-page simulation is a 32 × 32 XY model drawn as arrows. Its caption
 is in `_includes/xy-model.html`. To remove it, delete the
 `{% include xy-model.html %}` line from `index.html`.

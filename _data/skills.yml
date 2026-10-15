@@ -1,17 +1,27 @@
-# Skill groups for the CV page.
+# Skill groups for the CV page. Kept in line with the master CV.
 
 - area: Generative modeling
   items: >-
-    Score-based and diffusion models (DDPM, DDIM, manifold-aware SGMs), GANs,
-    LoRA fine-tuning, SimPO, transformer encoders (ModernBERT), recurrent
-    networks
+    Diffusion models (DDPM, DDIM, probability-flow ODE, score-based models on
+    manifolds); conditional GANs
+
+- area: Language and sequence models
+  items: >-
+    LLM fine-tuning (LoRA), preference optimization (SimPO), transformer
+    encoders (ModernBERT), recurrent networks (BiGRU), retrieval-augmented
+    generation
+
+- area: Reinforcement learning
+  items: >-
+    Deep Q-learning; contextual bandits (ellipsoid method, EXP4)
 
 - area: Scientific computing
   items: >-
-    Monte Carlo methods (Metropolis, simulated annealing, MALA), TOPAS particle
-    transport, statistical analysis of turbulence and spin-model observables
+    Monte Carlo methods (Metropolis, simulated annealing), Langevin dynamics and
+    MALA, ODE samplers; Geant4-based particle transport (TOPAS, TOPAS-nBio);
+    quantum circuits (QHED)
 
 - area: Software
   items: >-
-    Python, PyTorch, TensorFlow; Flask, FastAPI, Celery, Redis, MilvusDB,
-    KServe, NVIDIA DeepStream
+    Python, C++, PyTorch, TensorFlow; production ML serving (FastAPI, KServe,
+    NVIDIA DeepStream); Flask, Celery, Redis, Milvus, Streamlit

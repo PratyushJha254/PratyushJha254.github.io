@@ -4,6 +4,7 @@
     <div>
       <p>© {{ site.time | date: "%Y" }} {{ profile.name }}</p>
       <p class="site-footer__updated">Last updated {{ site.time | date: "%-d %B %Y" }}</p>
+      <p class="site-footer__top"><a href="#top">{% include icon.html name="arrow-up" %}<span>Back to top</span></a></p>
     </div>
     {% include link-list.html class="icon-row" labels=false feed=true %}
   </div>

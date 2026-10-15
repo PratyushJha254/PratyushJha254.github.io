@@ -1,0 +1,9 @@
+{%- comment -%}
+  "Expand all" and "Collapse all" for the folds inside the element with the
+  given id. Hidden until the script runs. Usage:
+  {% include fold-controls.html target="experience-folds" %}
+{%- endcomment -%}
+<div class="fold-controls" data-fold-controls="{{ include.target }}" hidden>
+  <button type="button" class="pill" data-fold="open">Expand all</button>
+  <button type="button" class="pill" data-fold="close">Collapse all</button>
+</div>

@@ -8,7 +8,7 @@
         <li>
           <a href="{{ item.url | relative_url }}"
             {%- if page.url == item.url %} aria-current="page"
-            {%- elsif page.url contains item.url %} class="is-section"
+            {%- elsif item.url != "/" and page.url contains item.url %} class="is-section"
             {%- endif %}>{{ item.label }}</a>
         </li>
         {%- endfor %}
@@ -19,4 +19,5 @@
       </button>
     </nav>
   </div>
+  <div class="read-progress" aria-hidden="true"><span data-progress></span></div>
 </header>

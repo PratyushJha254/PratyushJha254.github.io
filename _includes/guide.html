@@ -1,0 +1,12 @@
+{%- comment -%}
+  The floating button at the bottom left. It points to the next part of the
+  page that is still below the reader and, at the end, back to the top.
+  stops: "id of a heading|label;id|label" (home page), or leave it out to use
+  the page's section headings. Hidden on short pages.
+  Usage: {% include guide.html %}  or  {% include guide.html stops="..." %}
+{%- endcomment -%}
+<a class="guide" href="#top" data-guide="{{ include.stops | default: 'auto' }}" hidden>
+  <span class="guide__icon guide__icon--down">{% include icon.html name="arrow-down" %}</span>
+  <span class="guide__icon guide__icon--up">{% include icon.html name="arrow-up" %}</span>
+  <span class="guide__label">Back to top</span>
+</a>

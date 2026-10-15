@@ -3,12 +3,13 @@
 <head>
 {% include head.html %}
 </head>
-<body>
+<body id="top">
 <a class="skip-link" href="#main">Skip to content</a>
 {% include header.html %}
 <main id="main" class="wrap">
 {{ content }}
 </main>
+<div class="edge-fade" aria-hidden="true" data-edge-fade></div>
 {% include footer.html %}
 <script src="{{ '/assets/js/site.js' | relative_url }}" defer></script>
 </body>
